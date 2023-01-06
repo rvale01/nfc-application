@@ -9,6 +9,8 @@ export const boxStyle = (props: BoxI):CSS.Properties => ({
     justifyContent: props.direction === 'row' ? props.horizontalAlign : props.verticalAlign,
     alignItems: props.direction === 'row' ? props.verticalAlign : props.horizontalAlign,
     gap: props.gap,
+    // @ts-ignore
     height: props.height ?? 'initial',
+    // @ts-ignore
     width: props.width ?? 'initial',
 })
