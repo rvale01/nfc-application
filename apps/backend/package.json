@@ -4,9 +4,10 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx tsc",
+    "dev": "tsx watch index.ts",
+    "build": "esbuild index.ts --bundle --platform=node --outfile=dist/index.js --external:express --external:cors",
     "start": "node dist/index.js",
-    "dev": "node index.ts"
+    "type-check": "tsc"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
