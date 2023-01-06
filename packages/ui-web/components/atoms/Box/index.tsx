@@ -1,19 +1,21 @@
 import React from 'react'
+import { colors } from '../../../theme/colors';
 import { flexDirectionI, gapI, horizontalAlignI, verticalAlignI} from '../../../theme/layout'
 import { boxStyle } from './style'
 
 export interface BoxI {
     direction: flexDirectionI
-    verticalAlign: verticalAlignI; //TODO: add based on needs
+    verticalAlign?: verticalAlignI; //TODO: add based on needs
     horizontalAlign?: horizontalAlignI;
     children?: React.ReactNode[];
-    gap: keyof typeof gapI;
-
+    gap?: keyof typeof gapI;
+    height?: string | number;
+    width?: string | number;
 }
 
-export const Box = ({children, direction, gap, verticalAlign, horizontalAlign}: BoxI) => {
+export const Box = ({children, direction, gap, verticalAlign, horizontalAlign, width, height}: BoxI) => {
     return (
-        <div style={boxStyle({direction, gap, verticalAlign, horizontalAlign})}>
+        <div style={boxStyle({direction, gap, verticalAlign, horizontalAlign, width, height})}>
             {children}
         </div>
     )

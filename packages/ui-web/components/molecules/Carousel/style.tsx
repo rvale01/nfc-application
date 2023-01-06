@@ -21,11 +21,11 @@ export const dotsContainerStyle:CSS.Properties = {
 }
 
 export const carouselContainerStyle:CSS.Properties ={
-    backgroundColor: colors.primary,
-    height: '100vh',
+    height: '100%',
     display: 'flex',
     alignItems: 'center',
     alignContent: 'center',
     padding: '1rem',
     gap: '2rem',
+    width: '100%',
 } 
