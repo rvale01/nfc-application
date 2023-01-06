@@ -5,9 +5,9 @@ import { boxStyle } from './style'
 
 export interface BoxI {
     direction: flexDirectionI
-    verticalAlign?: verticalAlignI; //TODO: add based on needs
+    verticalAlign?: verticalAlignI;
     horizontalAlign?: horizontalAlignI;
-    children?: React.ReactNode[];
+    children?: React.ReactNode[] | React.ReactNode;
     gap?: keyof typeof gapI;
     height?: string | number;
     width?: string | number;

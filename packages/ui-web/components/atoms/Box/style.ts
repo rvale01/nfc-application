@@ -6,8 +6,8 @@ import { colors } from '../../../theme/colors';
 export const boxStyle = (props: BoxI):CSS.Properties => ({
     display: 'flex',
     flexDirection: props.direction,
-    justifyContent: props.horizontalAlign,
-    alignItems: props.verticalAlign,
+    justifyContent: props.direction === 'row' ? props.horizontalAlign : props.verticalAlign,
+    alignItems: props.direction === 'row' ? props.verticalAlign : props.horizontalAlign,
     gap: props.gap,
     height: props.height ?? 'initial',
     width: props.width ?? 'initial',
