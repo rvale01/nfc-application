@@ -1,8 +1,8 @@
 {
-  "name": "patient",
+  "name": "doctor",
+  "private": true,
   "main": "./index.tsx",
   "types": "./index.tsx",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
