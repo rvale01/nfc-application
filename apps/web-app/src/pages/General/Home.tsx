@@ -1,7 +1,10 @@
 import React from "react";
 import { Carousel, HomepageLayout, Box, Text } from "ui-web";
+// @ts-ignore
 import { ReactComponent as DoctorImg }  from '../../assets/doctorImg.svg'
+// @ts-ignore
 import { ReactComponent as WomanImg }  from '../../assets/womanImg.svg'
+// @ts-ignore
 import { ReactComponent as ManExplainingImg }  from '../../assets/manExplainingImg.svg'
 
 const View1 = () => {
