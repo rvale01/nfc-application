@@ -19,6 +19,7 @@ const View1 = () => {
     )
 }
 
+
 const View2 = () => {
     return (
         <Box direction="row">
