@@ -7,7 +7,7 @@ export interface BoxI {
     direction: flexDirectionI
     verticalAlign?: verticalAlignI;
     horizontalAlign?: horizontalAlignI;
-    children?: React.ReactNode[] | React.ReactNode;
+    children: React.ReactNode;
     gap?: keyof typeof gapI;
     height?: string | number;
     width?: string | number;
@@ -15,6 +15,7 @@ export interface BoxI {
 
 export const Box = ({children, direction, gap, verticalAlign, horizontalAlign, width, height}: BoxI) => {
     return (
+        // @ts-ignore
         <div style={boxStyle({direction, gap, verticalAlign, horizontalAlign, width, height})}>
             {children}
         </div>

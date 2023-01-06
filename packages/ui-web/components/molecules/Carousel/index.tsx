@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { carouselContainerStyle, dotsContainerStyle, dotStyle } from "./style";
 export interface CarouselI{
-    children: React.ReactNode[]
+    children: React.ReactNode
 }
 
 export const Carousel = ({children}: CarouselI) => {
@@ -10,7 +10,7 @@ export const Carousel = ({children}: CarouselI) => {
     return (
         <div style={carouselContainerStyle}>
             <div style={dotsContainerStyle}>
-                {children.map((value, index) => {
+                {Array.isArray(children) && children.map((value, index) => {
                     return (
                         <div
                             style={dotStyle({isSelected: shownIndex === index})} 
@@ -20,7 +20,7 @@ export const Carousel = ({children}: CarouselI) => {
                 })}
             </div>
 
-           {children[shownIndex]}
+           {Array.isArray(children) && children[shownIndex]}
         </div>
     )
 }
