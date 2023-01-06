@@ -27,5 +27,4 @@ export const carouselContainerStyle:CSS.Properties ={
     alignContent: 'center',
     padding: '1rem',
     gap: '2rem',
-    width: '100%',
 } 

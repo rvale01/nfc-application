@@ -16,4 +16,5 @@ export const buttonStyle = (props: ButtonI):CSS.Properties => ({
     border: 'none',
     color:  colorButton[props.type],
     borderRadius: '1.875rem',
+    cursor: 'pointer',
 })

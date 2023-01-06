@@ -12,5 +12,5 @@ export const textStyle = (props: TextI):CSS.Properties => ({
     color: colors[props.color],
     fontWeight: fontWeight[props.fontWeight],
     fontSize:  fontSize[props.size],
-    fontFamily: 'Arial, Helvetica, sans-serif'
+    fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif'
 })

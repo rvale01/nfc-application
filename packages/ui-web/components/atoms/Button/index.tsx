@@ -13,6 +13,7 @@ export const Button = ({label, disabled = false, type = 'primary', onClick}:Butt
         <button
             disabled={disabled}
             style={buttonStyle({type,})}
+            onClick={onClick}
         >{label}</button>
     )
 }
