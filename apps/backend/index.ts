@@ -1,14 +1,31 @@
-const express = require("express");
+import { json, urlencoded } from "body-parser";
+import express from "express";
+// import morgan from "morgan";
+import cors from "cors";
+// import { log } from "logger";
 
-const app = express();
+export const createServer = () => {
+  const app = express();
+  app
+    .disable("x-powered-by")
+    // .use(morgan("dev"))
+    .use(urlencoded({ extended: true }))
+    .use(json())
+    .use(cors())
+    .get("/message/:name", (req, res) => {
+      return res.json({ message: `hello ${req.params.name}` });
+    })
+    .get("/healthz", (req, res) => {
+      return res.json({ ok: true });
+    });
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
+  return app;
+};
 
-app.listen(5000, () => {
-  console.log("Running on port 5000.");
-});
+// eslint-disable-next-line turbo/no-undeclared-env-vars
+const port = process.env.PORT || 5001;
+const server = createServer();
 
-// Export the Express API
-module.exports = app;
+// server.listen(port, () => {
+//   log(`api running on ${port}`);
+// });
