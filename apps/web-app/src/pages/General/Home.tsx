@@ -40,13 +40,12 @@ const View3 = () => {
                 <Text 
                     textAlign="center"
                     text="You will be able to keep up with all your appointments from one place. Subscribe to our newsletter to be the first to try it out!" 
-                    fontWeight="bold" size='small' color="white"
+                    fontWeight="bold" size='small' color="link" //TODO: change to white
                 />
             </Box>
         </Box>
     )
 }
-
 
 export const Home = () => {
     return(
