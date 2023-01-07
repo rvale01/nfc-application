@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/backend/*",
-    "apps/web-app/*",
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
