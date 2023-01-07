@@ -1,14 +1,16 @@
 import { json, urlencoded } from "body-parser";
 import express from "express";
-// import morgan from "morgan";
+// @ts-ignore
+import morgan from "morgan";
 import cors from "cors";
-// import { log } from "logger";
+// @ts-ignore
+import { log } from "logger";
 
 export const createServer = () => {
   const app = express();
   app
     .disable("x-powered-by")
-    // .use(morgan("dev"))
+    .use(morgan("dev"))
     .use(urlencoded({ extended: true }))
     .use(json())
     .use(cors())
@@ -27,5 +29,5 @@ const port = process.env.PORT || 5001;
 const server = createServer();
 
 server.listen(port, () => {
-  // log(`api running on ${port}`);
+  console.log("working fine")
 });
