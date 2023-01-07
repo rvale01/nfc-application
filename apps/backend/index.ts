@@ -3,8 +3,6 @@ import express from "express";
 // @ts-ignore
 import morgan from "morgan";
 import cors from "cors";
-// @ts-ignore
-import { log } from "logger";
 
 export const createServer = () => {
   const app = express();
