@@ -26,6 +26,6 @@ export const createServer = () => {
 const port = process.env.PORT || 5001;
 const server = createServer();
 
-// server.listen(port, () => {
-//   log(`api running on ${port}`);
-// });
+server.listen(port, () => {
+  // log(`api running on ${port}`);
+});
