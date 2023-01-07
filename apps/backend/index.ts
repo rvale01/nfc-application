@@ -1,16 +1,14 @@
-import express, { Express, Request, Response } from 'express';
-import cors from 'cors'
+const express = require("express");
 
-const app = express()
-const port = 5000
+const app = express();
 
-app.use(cors({ origin: 'http://localhost:3000' }))
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
 
-app.get('/workspaces', (_, response) => {
-  const workspaces = [
-    { name: 'api', version: '1.0.0' },
-    { name: 'types', version: '1.0.0' },
-    { name: 'web', version: '1.0.0' },
-  ]
-  response.json({ data: workspaces })
-})
+app.listen(5000, () => {
+  console.log("Running on port 5000.");
+});
+
+// Export the Express API
+module.exports = app;
