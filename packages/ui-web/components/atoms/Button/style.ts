@@ -3,6 +3,7 @@ import {
     backgroundButton,
     colorButton
  } from '../../../theme/button'
+import { fontSize } from '../../../theme/text';
 
 interface ButtonI {
     type: 'link' | 'primary' | 'secondary' 
@@ -17,4 +18,5 @@ export const buttonStyle = (props: ButtonI):CSS.Properties => ({
     color:  colorButton[props.type],
     borderRadius: '1.875rem',
     cursor: 'pointer',
+    fontSize: fontSize.small
 })

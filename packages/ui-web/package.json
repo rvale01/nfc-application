@@ -7,7 +7,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "TIMING=1 eslint \"**/*.ts*\""
+    "lint": "TIMING=1 eslint \"**/*.ts*\"",
+    "chromatic": "npx chromatic --project-token=6f9be543e18a"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.15",
@@ -26,5 +27,7 @@
     "react": "^18.2.0",
     "tsconfig": "*",
     "typescript": "^4.5.2"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ui-web@0.0.0"
 }
