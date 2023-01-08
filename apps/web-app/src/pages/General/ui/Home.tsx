@@ -1,11 +1,11 @@
 import React from "react";
 import { Carousel, HomepageLayout, Box, Text } from "ui-web";
 // @ts-ignore
-import { ReactComponent as DoctorImg }  from '../../assets/doctorImg.svg'
+import { ReactComponent as DoctorImg }  from '../../../assets/doctorImg.svg'
 // @ts-ignore
-import { ReactComponent as WomanImg }  from '../../assets/womanImg.svg'
+import { ReactComponent as WomanImg }  from '../../../assets/womanImg.svg'
 // @ts-ignore
-import { ReactComponent as ManExplainingImg }  from '../../assets/manExplainingImg.svg'
+import { ReactComponent as ManExplainingImg }  from '../../../assets/manExplainingImg.svg'
 
 const View1 = () => {
     return (
@@ -40,7 +40,7 @@ const View3 = () => {
                 <Text 
                     textAlign="center"
                     text="You will be able to keep up with all your appointments from one place. Subscribe to our newsletter to be the first to try it out!" 
-                    fontWeight="bold" size='small' color="link" //TODO:
+                    fontWeight="bold" size='small' color="link"
                 />
             </Box>
         </Box>
