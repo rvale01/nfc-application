@@ -1,31 +1,19 @@
-import { json, urlencoded } from "body-parser";
-import express from "express";
-// @ts-ignore
-import morgan from "morgan";
-import cors from "cors";
+const express = require('express')
 
-export const createServer = () => {
-  const app = express();
-  app
-    .disable("x-powered-by")
-    .use(morgan("dev"))
-    .use(urlencoded({ extended: true }))
-    .use(json())
-    .use(cors())
-    .get("/message/:name", (req, res) => {
-      return res.json({ message: `hello ${req.params.name}` });
-    })
-    .get("/healthz", (req, res) => {
-      return res.json({ ok: true });
-    });
+const app = express()
+const PORT = 4000
 
-  return app;
-};
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `)
+})
 
-// eslint-disable-next-line turbo/no-undeclared-env-vars
-const port = process.env.PORT || 5001;
-const server = createServer();
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 
-server.listen(port, () => {
-  console.log("working fine yes!")
-});
+app.get('/about', (req, res) => {
+  res.send('This is my about route..... ')
+})
+
+// Export the Express API
+module.exports = app
