@@ -18,5 +18,6 @@ export const buttonStyle = (props: ButtonI):CSS.Properties => ({
     color:  colorButton[props.type],
     borderRadius: '1.875rem',
     cursor: 'pointer',
-    fontSize: fontSize.small
+    fontSize: fontSize.small,
+    width: 'fit-content'
 })

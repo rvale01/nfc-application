@@ -9,5 +9,5 @@ export const backgroundButton = {
 export const colorButton =  {
     primary: colors.white,
     secondary: colors.primary,
-    link: colors.white
+    link: colors.link
 }

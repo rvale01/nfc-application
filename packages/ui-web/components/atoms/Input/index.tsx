@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { inputBase } from './style';
 
 export interface Input {
-    defaultValue: string;
+    defaultValue?: string;
     placeholder: string;
     disabled?: boolean;
     type?: 'text' | 'email' | 'password' //TODO: add others

@@ -12,8 +12,8 @@ export const HomepageLayout = ({children}: HomepageLayoutI) => {
         <Container height='100%' background="primary" padding="small">
             <Box direction="column" height='100%'>
                 <Box direction="row" horizontalAlign="end">
-                    <Button label="Register" onClick={()=> console.log("okay")} type='link'/>
-                    <Button label="Login" onClick={()=> console.log("okay")} type='secondary'/>
+                    <Button label="Register" onClick={()=> window.location.href='/register'} type='primary'/>
+                    <Button label="Login" onClick={()=> window.location.href='/login'} type='secondary'/>
                 </Box>
 
                 {children}

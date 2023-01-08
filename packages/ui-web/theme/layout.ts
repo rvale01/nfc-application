@@ -13,5 +13,5 @@ export const paddingI = {
 }
 
 export type verticalAlignI = 'center' | "flex-start"
-export type horizontalAlignI = 'center' | "end"
+export type horizontalAlignI = 'center' | "end" | "space-evenly"
 export type flexDirectionI =  'row' | 'column'
