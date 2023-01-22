@@ -7,6 +7,7 @@ import { Home } from "./Home";
 import { Login } from "./Login";
 import { store } from '../redux/store'
 import { Provider } from 'react-redux'
+import { Register } from "./Register";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/register",
-        element: <div>Hello world!</div>,
+        element: <Register/>,
     },
     {
         path: "/doctor",
