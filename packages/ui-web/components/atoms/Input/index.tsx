@@ -5,7 +5,7 @@ export interface Input {
     defaultValue?: string;
     placeholder: string;
     disabled?: boolean;
-    type?: 'text' | 'email' | 'password' //TODO: add others
+    type?: 'text' | 'email' | 'password' | "date" //TODO: add others
 }
 
 export const Input = forwardRef(({ defaultValue, type, placeholder, disabled = false}:Input, ref) => {

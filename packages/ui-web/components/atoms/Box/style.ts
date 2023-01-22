@@ -1,6 +1,5 @@
 import { BoxI } from '.'
 import CSS from 'csstype';
-import { colors } from '../../../theme/colors';
 import { gapI } from '../../../theme/layout';
 
 
