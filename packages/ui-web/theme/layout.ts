@@ -12,6 +12,10 @@ export const paddingI = {
     xLarge: 32,
 }
 
-export type verticalAlignI = 'center' | "flex-start"
-export type horizontalAlignI = 'center' | "end" | "space-evenly"
+export const borderRadiusI = {
+    standard: 20
+}
+
+export type verticalAlignI = 'center' | "flex-start" 
+export type horizontalAlignI = 'center' | "end" | "space-evenly" | "space-between"
 export type flexDirectionI =  'row' | 'column'
