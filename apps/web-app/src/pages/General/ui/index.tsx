@@ -8,6 +8,7 @@ import { Login } from "./Login";
 import { store } from '../redux/store'
 import { Provider } from 'react-redux'
 import { Register } from "./Register";
+import { PatientDetails } from "./PatientDetails/index";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path: "/patient",
         element: <div>Hello world!</div>,
+    },
+    {
+        path: "/patient-details/:patient_id",
+        element: <PatientDetails/>,
     },
   ]);
 

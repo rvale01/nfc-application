@@ -1,9 +1,9 @@
-interface Diseases {
+interface DiseasesI {
     name: String;
     notes: String;
 }
 
-interface Prescription {
+interface PrescriptionI {
     end: String;
     start: String;
     name: String;
@@ -11,7 +11,7 @@ interface Prescription {
     recurring: boolean;
 }
 
-interface PatientDetails {
+interface PatientDetailsI {
     name: String;
     surname: String;
     address: String;
@@ -26,5 +26,5 @@ interface PatientDetails {
     nhs_number: String;
     sex: "F" | "M" | "other" | "do not want to say";
     prescriptions: Prescription[];
-    diseases: Diseases[]
+    diseases: Diseases[];
 }

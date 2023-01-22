@@ -1,5 +1,5 @@
 
-interface Doctor {
+interface DoctorI {
     address: String;
     address_2: String;
     doctor_number: String;

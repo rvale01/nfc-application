@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../../../../firebase';
 import { Carousel, HomepageLayout, Box, Text } from "ui-web";
 // @ts-ignore
 import { ReactComponent as DoctorImg }  from '../../../assets/doctorImg.svg'
@@ -48,13 +50,31 @@ const View3 = () => {
 }
 
 export const Home = () => {
-    return(
-        <HomepageLayout>
-            <Carousel>
-                <View1/>
-                <View2/>
-                <View3/>
-            </Carousel>
-        </HomepageLayout>
-    )
+    const [isLogged, setIsLogged] = useState<null | boolean>(null)
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            setIsLogged(true);
+        }
+        else {
+            setIsLogged(false)
+        }
+    })
+
+    if (isLogged) {
+        console.log(auth.currentUser, 'hey')
+        return <div>logged</div>
+    } else if(isLogged === null){
+        return <div>loading</div>
+    }
+    else {
+        return(
+            <HomepageLayout>
+                <Carousel>
+                    <View1/>
+                    <View2/>
+                    <View3/>
+                </Carousel>
+            </HomepageLayout>
+        )
+    }
 }
