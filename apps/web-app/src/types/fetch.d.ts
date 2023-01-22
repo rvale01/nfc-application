@@ -1,0 +1,1 @@
+type StatusI = "idle" | 'pending' | 'rejected' | 'successful'
