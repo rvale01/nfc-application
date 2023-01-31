@@ -24,6 +24,7 @@ export const login = createAsyncThunk(
     async ({email, password}: loginUserI) => {
         showNotification(
             {
+                // @ts-ignore
                 func: signInWithEmailAndPassword(auth, email, password), 
                 messages: {
                     error: {
@@ -86,6 +87,7 @@ export const register = createAsyncThunk(
     async (userData: registerI) => {
         showNotification(
             {
+                // @ts-ignore
                 func:loginFunc(userData),
                 messages: {
                     error: {

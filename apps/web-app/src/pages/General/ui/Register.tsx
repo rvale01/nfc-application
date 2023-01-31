@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Box, Button, Container, Text, Input, Toggle } from "ui-web";
 // @ts-ignore
 import { ReactComponent as WomanTick }  from '../../../assets/womanTick.svg'
 import { register } from "../redux/features/auth/thunk";
+import { useAppDispatch } from "../redux/store";
 
 export const Register = () => {  
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [isPatient, setIsPatient] = useState(false)
 
     const userRef = useRef()
@@ -34,10 +34,15 @@ export const Register = () => {
                         <Button type="primary" label="Register" 
                         onClick={()=> dispatch(
                             register({
+                                // @ts-ignore
                                 email: userRef.current!.value, 
+                                // @ts-ignore
                                 name: nameRef.current!.value, 
+                                // @ts-ignore    
                                 password: passRef.current!.value,
+                                // @ts-ignore
                                 surname: surnameRef.current!.value,
+                                // @ts-ignore
                                 doctorCode: isPatient ? null : doctorCodeRef!.current.value
                             }))}
                         />

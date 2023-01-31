@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { Box, Button, Container, Text, Input } from "ui-web";
 // @ts-ignore
 import { ReactComponent as WomanTick }  from '../../../assets/womanTick.svg'
 import { login } from "../redux/features/auth/thunk";
+import { useAppDispatch } from "../redux/store";
 
 export const Login = () => {    
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const userRef = useRef()
     const passRef = useRef()
 
@@ -18,7 +18,11 @@ export const Login = () => {
                     <Input ref={userRef} placeholder="email@email.com" type="email"/>
                     <Input ref={passRef} placeholder="********" type="password"/>
                     <Box direction="column" gap="small">
-                        <Button type="primary" onClick={()=>dispatch(login({email:userRef.current.value, password: passRef.current.value }))} label="Login"/>
+                        <Button type="primary" 
+                            // @ts-ignore 
+                            onClick={()=>dispatch(login({email:userRef.current.value, password: passRef.current.value }))} 
+                            label="Login"
+                        />
                         <Button type="link" onClick={()=> window.location.href="/register"} label="Don’t have an account? Register here"/>
                     </Box>
                 </Box>

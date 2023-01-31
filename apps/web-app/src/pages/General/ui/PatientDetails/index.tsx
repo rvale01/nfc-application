@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
 import { patientDetails } from '../../redux/features/patientDetails/thunk';
 import { useParams } from 'react-router-dom';
 import { Tabs } from 'ui-web';
+import { useAppDispatch } from '../../redux/store';
 
 export const PatientDetails = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     let { patient_id } = useParams();
 
     useEffect(()=> {
