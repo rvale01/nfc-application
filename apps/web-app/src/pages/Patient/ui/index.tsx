@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
   } from "react-router-dom";
 import { auth } from "../../../../firebase";
@@ -21,7 +21,7 @@ const routes = [
     },
 ]
 
-const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 export const Patient = () => {
     const handleChange = (index: number) => {
