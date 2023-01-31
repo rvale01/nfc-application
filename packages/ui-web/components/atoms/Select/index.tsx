@@ -13,7 +13,9 @@ export const Select = ({ options, onChange }: SelectI) => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    // @ts-ignore
     setSelectedOption(event.target.value);
+    // @ts-ignore
     onChange(event.target.value);
   };
 
