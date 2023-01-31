@@ -1,41 +1,42 @@
 import React, { useEffect } from 'react'
-import { patientDetails } from '../../redux/features/patientDetails/thunk';
+import { getPatientDetails } from '../../redux/features/patientDetails/thunk';
 import { useParams } from 'react-router-dom';
-import { Tabs } from 'ui-web';
+import { DiseasesTable, PersonalDetailViews, PrescriptionsTable, Tabs } from 'ui-web';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { selectorPatientDetailsRequest } from '../../redux/features/patientDetails/selectors';
+// @ts-ignore
+import { ReactComponent as Logo }  from '../../../../assets/logo.svg'
+
 
 export const PatientDetails = () => {
-    const patientDetailsRequest = useAppSelector(selectorPatientDetailsRequest)
+    const { data: patientDetails, status} = useAppSelector(selectorPatientDetailsRequest)
 
     const dispatch = useAppDispatch()
     let { patientId } = useParams();
-    
-    console.log(patientDetailsRequest.data, 'patient?')
-    
+        
     useEffect(()=> {
-        dispatch(patientDetails(patientId!))
+        dispatch(getPatientDetails(patientId!))
     }, [])
 
 
-    if(patientDetailsRequest.status === 'fulfilled'){
+    if(status === 'fulfilled'){
         return (
             <Tabs
                 items={[
                     {
                         label: "Personal Details",
                         key: 1,
-                        children: <div>ok</div>
+                        children: <PersonalDetailViews patient={patientDetails}/>
                     },
                     {
                         label: "Diseases",
                         key: 2,
-                        children: <div>ok</div>
+                        children: <DiseasesTable diseases={patientDetails?.diseases}/>
                     },
                     {
                         label: "Prescriptions",
                         key: 3,
-                        children: <div>ok</div>
+                        children: <PrescriptionsTable prescriptions={patientDetails?.prescriptions}/>
                     }
                 ]}
             />

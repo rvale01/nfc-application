@@ -21,14 +21,14 @@ const menuItems = [
 
 export const Patient = () => {
     const handleChange = (path: string) => {
-        if(path === "logout"){
+        // if(path === "logout"){
             auth.signOut()
             .then(()=> {
                 window.location.href = '/'
             })
-        }else{
-            window.location.href = "/#/patient/#" + path
-        }
+        // }else{
+            // window.location.href = "/#/patient/#" + path
+        // }
     }
 
     return(

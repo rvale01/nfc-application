@@ -17,7 +17,7 @@ export const Register = () => {
 
     return (
         <Box direction="row" verticalAlign="center" height="100%" horizontalAlign="space-evenly">
-            <Container padding="xLarge" showShadow borderRadius="standard">
+            <Container padding="xLarge" showShadow borderRadius="standard" minWidth="300px">
                 <Box direction="column" gap="large">
                     <Box direction="row" verticalAlign="center" horizontalAlign="space-between">
                         <Text text="Register" color="black" fontWeight="bold"/>
@@ -51,7 +51,7 @@ export const Register = () => {
                 </Box>
             </Container>
 
-            <WomanTick/>
+            <WomanTick style={{maxWidth: "400px"}}/>
         </Box>
     )
 }

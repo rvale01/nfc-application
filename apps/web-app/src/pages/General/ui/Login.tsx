@@ -11,7 +11,7 @@ export const Login = () => {
     const passRef = useRef()
 
     return (
-        <Box direction="row" verticalAlign="center" height="100%" horizontalAlign="space-evenly">
+        <Box direction="row" verticalAlign="center" horizontalAlign="space-evenly" height="100%">
             <Container padding="xLarge" showShadow borderRadius="standard">
                 <Box direction="column" gap="large">
                     <Text text="Login" color="black" fontWeight="bold"/>
@@ -28,7 +28,7 @@ export const Login = () => {
                 </Box>
             </Container>
 
-            <WomanTick/>
+            <WomanTick style={{maxWidth: "400px"}}/>
         </Box>
     )
 }

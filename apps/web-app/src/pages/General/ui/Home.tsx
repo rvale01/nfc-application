@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../../../firebase';
-import { Carousel, HomepageLayout, Box, Text } from "ui-web";
+import { Carousel, HomepageLayout, Box, Text, LoadingSpinner } from "ui-web";
 // @ts-ignore
 import { ReactComponent as DoctorImg }  from '../../../assets/doctorImg.svg'
 // @ts-ignore
@@ -9,11 +9,13 @@ import { ReactComponent as WomanImg }  from '../../../assets/womanImg.svg'
 // @ts-ignore
 import { ReactComponent as ManExplainingImg }  from '../../../assets/manExplainingImg.svg'
 
+
+// TODO: create components for this in uikit
 const View1 = () => {
     return (
-        <Box direction="row">
-            <DoctorImg/>
-            <Box direction="column" verticalAlign="center" horizontalAlign="center">
+        <Box direction="row" width={"100%"}>
+            <DoctorImg style={{maxWidth: "700px"}}/>
+            <Box direction="column" verticalAlign="center" horizontalAlign="center" >
                 <Text textAlign="center" text="Easier to manage your patients"  color='white' fontWeight="bold" size="large"/>
                 <Text textAlign="center" text="Manage all your patients, their prescriptions" fontWeight="bold" size='small' color="white"/>
             </Box>
@@ -23,8 +25,8 @@ const View1 = () => {
 
 const View2 = () => {
     return (
-        <Box direction="row">
-            <WomanImg/>
+        <Box direction="row" width={"100%"}>
+            <WomanImg style={{maxWidth: "700px"}}/>
             <Box direction="column" verticalAlign="center" horizontalAlign="center">
                 <Text textAlign="center" text="Coming next ..."  color='white' fontWeight="bold" size="large"/>
                 <Text textAlign="center" text="Easy to set up and easy to use!" fontWeight="bold" size='small' color="white"/>
@@ -35,9 +37,9 @@ const View2 = () => {
 
 const View3 = () => {
     return (
-        <Box direction="row">
-            <ManExplainingImg/>
-            <Box direction="column" verticalAlign="center" horizontalAlign="center" width="40%">
+        <Box direction="row" width={"100%"}>
+            <ManExplainingImg style={{maxWidth: "700px"}}/>
+            <Box direction="column" verticalAlign="center" horizontalAlign="center" >
                 <Text textAlign="center" text="As easy as a piece of cake!"  color='white' fontWeight="bold" size="large"/>
                 <Text 
                     textAlign="center"
@@ -65,8 +67,7 @@ export const Home = () => {
         //TODO: if logged -> redirect to either /doctor or /patient
         return <div>logged</div>
     } else if(isLogged === null){
-        // TODO: create a loading
-        return <div>loading</div>
+        return <LoadingSpinner color="primary"/>
     }
     else {
         return(
