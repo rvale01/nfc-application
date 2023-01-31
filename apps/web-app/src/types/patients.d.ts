@@ -20,7 +20,6 @@ interface PatientDetailsI {
     email: String;
     ethnicity: String;
     home_phone: String;
-    member_id: String;
     id: String;
     mobile: String;
     nhs_number: String;

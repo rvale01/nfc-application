@@ -9,6 +9,7 @@ import { store } from '../redux/store'
 import { Provider } from 'react-redux'
 import { Register } from "./Register";
 import { PatientDetails } from "./PatientDetails/index";
+import { Patient } from "../../Patient/ui";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/patient",
-        element: <div>Hello world!</div>,
+        element: <Patient/>,
     },
     {
         path: "/patient-details/:patient_id",

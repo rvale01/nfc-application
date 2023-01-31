@@ -53,6 +53,7 @@ export const Home = () => {
     const [isLogged, setIsLogged] = useState<null | boolean>(null)
     auth.onAuthStateChanged(user => {
         if (user) {
+            //TODO: dispatch get details -> details are then saved in slice auth
             setIsLogged(true);
         }
         else {
@@ -61,9 +62,10 @@ export const Home = () => {
     })
 
     if (isLogged) {
-        console.log(auth.currentUser, 'hey')
+        //TODO: if logged -> redirect to either /doctor or /patient
         return <div>logged</div>
     } else if(isLogged === null){
+        // TODO: create a loading
         return <div>loading</div>
     }
     else {

@@ -8,6 +8,7 @@ import { register } from "../redux/features/auth/thunk";
 export const Register = () => {  
     const dispatch = useDispatch()
     const [isPatient, setIsPatient] = useState(false)
+
     const userRef = useRef()
     const passRef = useRef()
     const nameRef = useRef()
