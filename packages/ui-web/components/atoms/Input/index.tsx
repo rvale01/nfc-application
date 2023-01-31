@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { inputBase } from './style';
+import { Input as InputEl } from './style';
 
 export interface Input {
     defaultValue?: string;
@@ -10,14 +10,13 @@ export interface Input {
 
 export const Input = forwardRef(({ defaultValue, type, placeholder, disabled = false}:Input, ref) => {
     return (
-        <input
+        <InputEl
             // @ts-ignore
             ref={ref}
             defaultValue={defaultValue}
             type={type}
             placeholder={placeholder}
             disabled={disabled}
-            style={inputBase}
         />
     )
 })

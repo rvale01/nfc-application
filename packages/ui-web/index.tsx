@@ -11,8 +11,13 @@ export { Text } from './components/atoms/Text'
 export { Tabs } from './components/atoms/Tabs'
 export { Toggle } from './components/atoms/Toggle'
 export { Input } from './components/atoms/Input'
+export { Grid } from './components/atoms/Grid'
+export { LoadingSpinner } from './components/atoms/Loading'
 
 // modules
 export { Carousel } from './components/molecules/Carousel'
 export { DashboardLayout } from './components/molecules/DashboardLayout'
 export { HomepageLayout } from './components/molecules/HomepageLayout'
+export { PersonalDetailViews } from "./components/molecules/PersonalDetails"
+export { DiseasesTable } from './components/molecules/DiseasesTable'
+export { PrescriptionsTable } from './components/molecules/PrescriptionTable'

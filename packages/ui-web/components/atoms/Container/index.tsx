@@ -1,7 +1,7 @@
 import React from 'react'
 import { colors } from '../../../theme/colors';
 import { borderRadiusI, paddingI } from '../../../theme/layout';
-import { containerStyle } from './style'
+import { Container as ContainerEl } from './style'
 export interface ContainerI {
     children: React.ReactNode
     background?: keyof typeof colors;
@@ -10,14 +10,14 @@ export interface ContainerI {
     padding?: keyof typeof paddingI;
     showShadow?: boolean;
     borderRadius?: keyof typeof borderRadiusI;
+    minWidth?: string;
 }
 
-export const Container = ({children, background, width, height, padding, showShadow, borderRadius}: ContainerI) => {
+export const Container = (props: ContainerI) => {
     return (
-        // @ts-ignore
-        <div style={containerStyle({width, height, background, padding, showShadow, borderRadius})}>
-            {children}
-        </div>
+        <ContainerEl {...props}>
+            {props.children}
+        </ContainerEl>
     )
 }
 

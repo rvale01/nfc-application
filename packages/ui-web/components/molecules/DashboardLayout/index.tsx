@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "../../atoms/Box";
-import * as style from './style'
+import { MenuItem, SideMenu} from './style'
 
 export interface DashboardLayoutI {
     menuItems: {path: string, label: string}[]; 
@@ -13,13 +13,13 @@ export const DashboardLayout = ({menuItems, activeItem, onChange, children}: Das
 
     return (
         <Box direction="row">
-            <div style={style.sideMenu()}>
+            <SideMenu>
                 {menuItems.map((value, i)=> {
                     return(
-                        <div style={style.menuItem(activeItem === i)} onClick={()=>onChange(value.path)}>{value.label}</div>
+                        <MenuItem active={activeItem === i} onClick={()=>onChange(value.path)}>{value.label}</MenuItem>
                     )
                 })}
-            </div>
+            </SideMenu>
             <div>{children}</div>
         </Box>
     )

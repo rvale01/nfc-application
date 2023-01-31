@@ -1,5 +1,5 @@
 import * as React from "react";
-import { buttonStyle} from "./style";
+import { Button as ButtonEl} from "./style";
 export interface ButtonI {
     label: string;
     disabled?: boolean;
@@ -10,10 +10,13 @@ export interface ButtonI {
 
 export const Button = ({label, disabled = false, type = 'primary', onClick}:ButtonI) => {
     return (
-        <button
+        // @ts-ignore
+        <ButtonEl
             disabled={disabled}
-            style={buttonStyle({type,})}
             onClick={onClick}
-        >{label}</button>
+            type={type}
+        >
+            {label}
+        </ButtonEl>
     )
 }

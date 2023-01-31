@@ -1,30 +1,33 @@
 import { colors } from '../../../theme/colors'
-import CSS from 'csstype'
+import styled from 'styled-components';
+
+
 
 interface DotI {
     isSelected: boolean
 }
-export const dotStyle = (props: DotI):CSS.Properties  => ({
-    backgroundColor: colors.white,
-    border: '1px solid transparent',
-    borderRadius: '50%',
-    height:  props.isSelected ? '1rem' : '0.5rem', 
-    width: props.isSelected ? '1rem' : '0.5rem', 
-    cursor: 'pointer'
-})
 
-export const dotsContainerStyle:CSS.Properties = {
-    display: 'flex',
-    gap: '0.2rem',
-    flexDirection: 'column',
-    alignItems: 'center',
-}
+export const Dot = styled.div<DotI>`
+  background-color: ${colors.white};
+  border: 1px solid transparent;
+  border-radius: 50%;
+  height: ${props => (props.isSelected ? '1rem' : '0.5rem')};
+  width: ${props => (props.isSelected ? '1rem' : '0.5rem')};
+  cursor: pointer;
+`;
 
-export const carouselContainerStyle:CSS.Properties ={
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-    padding: '1rem',
-    gap: '2rem',
-} 
+export const DotsContainer = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CarouselContainer = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 1rem;
+  gap: 2rem;
+`;

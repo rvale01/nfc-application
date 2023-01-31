@@ -1,7 +1,7 @@
 import React from 'react'
 import { colors } from '../../../theme/colors'
 import { fontSize } from '../../../theme/text'
-import { textStyle } from './style'
+import { Text as TextEl } from './style'
 export interface TextI {
     fontWeight?: 'bold' | 'normal'
     size?: keyof typeof fontSize,
@@ -11,10 +11,13 @@ export interface TextI {
 }
 export const Text = ({ text, color = 'primary', fontWeight = 'normal', size = 'medium', textAlign}: TextI) => {
     return (
-        <div
-            style={textStyle({color, fontWeight, size, textAlign})}
+        <TextEl
+            color={color}
+            fontWeight={fontWeight}
+            size={size}
+            textAlign={textAlign}
         >
             {text}
-        </div>
+        </TextEl>
     )
 }

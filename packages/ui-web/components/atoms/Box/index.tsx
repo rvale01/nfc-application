@@ -1,7 +1,6 @@
 import React from 'react'
-import { colors } from '../../../theme/colors';
 import { flexDirectionI, gapI, horizontalAlignI, verticalAlignI} from '../../../theme/layout'
-import { boxStyle } from './style'
+import { Box as BoxItem } from './style'
 
 export interface BoxI {
     direction: flexDirectionI
@@ -11,13 +10,13 @@ export interface BoxI {
     gap?: keyof typeof gapI;
     height?: string | number;
     width?: string | number;
+    responsive?: boolean;
 }
 
-export const Box = ({children, direction, gap, verticalAlign, horizontalAlign, width, height}: BoxI) => {
+export const Box = ({children, direction, gap, verticalAlign, horizontalAlign, width, height, responsive=true}: BoxI) => {
     return (
-        // @ts-ignore
-        <div style={boxStyle({direction, gap, verticalAlign, horizontalAlign, width, height})}>
+        <BoxItem responsive={responsive} direction={direction} gap={gap} verticalAlign={verticalAlign} horizontalAlign={horizontalAlign} width={width} height={height}>
             {children}
-        </div>
+        </BoxItem>
     )
 }

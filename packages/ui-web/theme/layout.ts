@@ -1,20 +1,20 @@
 export const gapI = {
-    small: 8 ,
-    medium: 16 ,
-    large: 24,
-    xLarge: 32,
-}
-
+    small: '8px',
+    medium: '16px',
+    large: '24px',
+    xLarge: '32px'
+};
+    
 export const paddingI = {
-    small: 8 ,
-    medium: 16 ,
-    large: 24,
-    xLarge: 32,
-}
-
+    small: '8px',
+    medium: '16px',
+    large: '24px',
+    xLarge: '32px'
+};
+    
 export const borderRadiusI = {
-    standard: 20
-}
+    standard: '20px'
+};    
 
 export type verticalAlignI = 'center' | "flex-start" 
 export type horizontalAlignI = 'center' | "end" | "space-evenly" | "space-between"
