@@ -16,7 +16,7 @@ export const DashboardLayout = ({menuItems, activeItem, onChange, children}: Das
             <div style={style.sideMenu()}>
                 {menuItems.map((value, i)=> {
                     return(
-                        <div style={style.menuItem(activeItem === i)} onClick={onChange}>{value}</div>
+                        <div style={style.menuItem(activeItem === i)} onClick={()=>onChange(i)}>{value}</div>
                     )
                 })}
             </div>

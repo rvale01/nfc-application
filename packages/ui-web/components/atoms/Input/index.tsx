@@ -11,6 +11,7 @@ export interface Input {
 export const Input = forwardRef(({ defaultValue, type, placeholder, disabled = false}:Input, ref) => {
     return (
         <input
+            // @ts-ignore
             ref={ref}
             defaultValue={defaultValue}
             type={type}
