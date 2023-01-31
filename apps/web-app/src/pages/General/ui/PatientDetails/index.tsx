@@ -41,4 +41,5 @@ export const PatientDetails = () => {
             />
         )     
     }
+    return null
 }
