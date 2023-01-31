@@ -46,7 +46,7 @@ export const Register = () => {
                                 doctorCode: isPatient ? null : doctorCodeRef!.current.value
                             }))}
                         />
-                        <Button type="link" onClick={()=> window.location.href="/register"} label="Don’t have an account? Register here"/>
+                        <Button type="link" onClick={()=> window.location.href="/#/login"} label="Login here"/>
                     </Box>
                 </Box>
             </Container>

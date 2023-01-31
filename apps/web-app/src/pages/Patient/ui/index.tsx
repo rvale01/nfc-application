@@ -1,47 +1,47 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
-import {
-    createHashRouter,
-    RouterProvider,
-  } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { auth } from "../../../../firebase";
+import { PersonalDetails } from "./PersonalDetails";
 
-const routes = [
+const menuItems = [
     {
-      path: "/personal-details",
-      element: <div/>,
-    },
+        path: "/personal-details",
+        label: "Personal Details",
+        element: <PersonalDetails />
+    }, 
     {
-        path: "/diseases",
-        element:  <div/>,
+        path: "/logout",
+        label: "Logout",
+        element: <div>Hello</div>
     },
-    {
-        path: "/prescriptions",
-        element:  <div/>,
-    },
+    { path: '/diseases', label: 'Diseases', element: <div>Hello</div> },
+    { path: '/prescriptions', label: 'Prescriptions', element: <div>Hello</div> }
 ]
 
-const router = createHashRouter(routes);
-
 export const Patient = () => {
-    const handleChange = (index: number) => {
-        if(index === 3){
+    const handleChange = (path: string) => {
+        if(path === "logout"){
             auth.signOut()
             .then(()=> {
                 window.location.href = '/'
             })
         }else{
-            window.location.href = routes[index].path
+            window.location.href = "/#/patient/#" + path
         }
     }
 
     return(
         <DashboardLayout
             activeItem={1}
-            menuItems={['Personal Details', 'Diseases', 'Prescriptions', 'Logout']}
+            menuItems={menuItems}
             onChange={handleChange}
         >
-            <RouterProvider router={router} />
+            <Routes>
+                {menuItems.map(item => (
+                    <Route key={item.path} path={"/personal-details"} element={<div>okay</div>}/>
+                ))}
+            </Routes>
         </DashboardLayout>
     )
 }

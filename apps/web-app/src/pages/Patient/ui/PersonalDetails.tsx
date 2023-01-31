@@ -1,26 +1,26 @@
 import React from "react";
 import { Button, Container, Input, Select } from "ui-web";
 
-export const PersonalDetails = (disabled: boolean) => {
-    
+export const PersonalDetails = () => {
+    console.log("Personal details")
     return (
         <Container>
-            <Input placeholder="Name" type="text" disabled={disabled}/>
-            <Input placeholder="Surname" type="text" disabled={disabled}/>
-            <Input placeholder="Address" type="text" disabled={disabled}/>
-            <Input placeholder="Address 2" type="text" disabled={disabled}/>
-            <Input placeholder="Date of birth" type="date" disabled={disabled}/>
-            <Input placeholder="Email" type="email" disabled={disabled}/>
-            <Input placeholder="Ethnicity" type="text" disabled={disabled}/>
-            <Input placeholder="Home Phone" type="text" disabled={disabled}/>
-            <Input placeholder="Id" type="text" disabled={disabled}/>
-            <Input placeholder="Mobile" type="text" disabled={disabled}/>
-            <Input placeholder="NHS Number" type="text" disabled={disabled}/>
+            <Input placeholder="Name" type="text" />
+            <Input placeholder="Surname" type="text" />
+            <Input placeholder="Address" type="text" />
+            <Input placeholder="Address 2" type="text" />
+            <Input placeholder="Date of birth" type="date" />
+            <Input placeholder="Email" type="email" />
+            <Input placeholder="Ethnicity" type="text" />
+            <Input placeholder="Home Phone" type="text" />
+            <Input placeholder="Id" type="text" />
+            <Input placeholder="Mobile" type="text" />
+            <Input placeholder="NHS Number" type="text" />
             <Select 
                 onChange={()=> null}
                 options={[
                     {label: "F", key: "f"},
-                    {label: "M", key: "m"},
+                    {label: "M", key: "f"},
                     {label: "Other", key: "other"}
                 ]}
             />

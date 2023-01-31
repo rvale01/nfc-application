@@ -23,7 +23,7 @@ export const Login = () => {
                             onClick={()=>dispatch(login({email:userRef.current.value, password: passRef.current.value }))} 
                             label="Login"
                         />
-                        <Button type="link" onClick={()=> window.location.href="/register"} label="Don’t have an account? Register here"/>
+                        <Button type="link" onClick={()=> window.location.href="/#/register"} label="Don’t have an account? Register here"/>
                     </Box>
                 </Box>
             </Container>

@@ -16,7 +16,9 @@ const errors = {
     "auth/too-many-requests": "Too many errors! Try later",
     'auth/user-not-found': "User not found! Check your details.",
     "auth/user-disabled": "User disabled! Contact us for more info!",
-    "auth/user-cancelled": "User cancelled! Contact us for more info!"
+    "auth/user-cancelled": "User cancelled! Contact us for more info!",
+    "auth/email-already-in-use": "Email alreay in use! Click on the login page.",
+    "default": "Something went wrong. Try again in a few minutes"
 }
 
 export const login = createAsyncThunk(
@@ -24,13 +26,16 @@ export const login = createAsyncThunk(
     async ({email, password}: loginUserI) => {
         showNotification(
             {
-                // @ts-ignore
-                func: signInWithEmailAndPassword(auth, email, password), 
+                func: () => signInWithEmailAndPassword(auth, email, password), 
                 messages: {
                     error: {
                         render({data}){
                             // @ts-ignore
-                            return errors[data.code]
+                            if (data.code in errors){
+                                // @ts-ignore
+                                return errors[data.code as keyof typeof errors]
+                            }
+                            return errors.default
                           }                  
                     },
                     pending: 'loading',
@@ -53,9 +58,9 @@ interface registerI {
     surname: string;
 }
 
-const loginFunc = async({email, password, doctorCode, name, surname}:registerI) => {
+const registerFunc = async({email, password, doctorCode, name, surname}:registerI) => {
     return new Promise(async (resolve, reject) => {
-        await createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then( async(res) => 
             doctorCode ?
                 await setDoc(
@@ -78,8 +83,12 @@ const loginFunc = async({email, password, doctorCode, name, surname}:registerI) 
                     }
                 )
                 .then(() => resolve(""))
-                .catch((err)=> reject(err))
-        )
+                .catch((err)=> {
+                    reject(err)
+                })
+        ).catch(err=> {
+            reject(err)
+        })
     })
 }
 export const register = createAsyncThunk(
@@ -87,13 +96,17 @@ export const register = createAsyncThunk(
     async (userData: registerI) => {
         showNotification(
             {
-                // @ts-ignore
-                func:loginFunc(userData),
+                func:() => registerFunc(userData),
                 messages: {
                     error: {
-                        render(err){
-                            console.log(err)
-                            return 'ok'
+                        render({data}){
+                            console.log(data)
+                             // @ts-ignore
+                            if (data.code in errors){
+                                // @ts-ignore
+                                return errors[data.code as keyof typeof errors]
+                            }
+                            return errors.default
                           }                  
                     },
                     pending: 'loading',

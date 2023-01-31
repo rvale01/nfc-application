@@ -3,9 +3,9 @@ import { Box } from "../../atoms/Box";
 import * as style from './style'
 
 export interface DashboardLayoutI {
-    menuItems: string[]; 
+    menuItems: {path: string, label: string}[]; 
     activeItem: number;
-    onChange: (index: number)=> void; 
+    onChange: (path: string)=> void; 
     children: React.ReactNode;
 }
 
@@ -16,7 +16,7 @@ export const DashboardLayout = ({menuItems, activeItem, onChange, children}: Das
             <div style={style.sideMenu()}>
                 {menuItems.map((value, i)=> {
                     return(
-                        <div style={style.menuItem(activeItem === i)} onClick={()=>onChange(i)}>{value}</div>
+                        <div style={style.menuItem(activeItem === i)} onClick={()=>onChange(value.path)}>{value.label}</div>
                     )
                 })}
             </div>
