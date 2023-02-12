@@ -4,14 +4,6 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
 import { showNotification } from 'ui-web';
 
-
-const redirectAfterAuth = (isPatient: boolean) => {
-    if(isPatient){
-        window.location.href = "/#/patient"
-    }else{
-        window.location.href = "/#/doctor"
-    }
-}
 interface loginUserI {
     email: string;
     password: string;
@@ -33,31 +25,10 @@ const errors = {
 const loginFunc = async({email, password, isPatient}: loginUserI) => {
     return new Promise(async (resolve, reject) => {
         signInWithEmailAndPassword(auth, email, password)
-        .then( async(res) => 
-            isPatient ?
-                await getDoc(doc(db, "patients", res.user.uid))
-                .then((res2) => {
-                    if(res2.data() === undefined){
-                        reject("auth/user-not-found")
-                    }else{
-                        resolve("")
-                    }
-                })
-                .catch((err)=> reject(err))
-            : await getDoc(doc(db, "doctors", res.user.uid))
-                .then((res2) => {
-                    if(res2.data() === undefined){
-                        reject("auth/user-not-found")
-                    }else{
-                        resolve("")
-                    }
-                })
-                .catch((err)=> {
-                    reject(err)
-                })
-        ).catch(err=> {
-            reject(err)
-        })
+            .then( () => resolve(""))
+            .catch(err=> {
+                reject(err)
+            })
     })
 }
 export const login = createAsyncThunk(
@@ -78,12 +49,7 @@ export const login = createAsyncThunk(
                           }                  
                     },
                     pending: 'loading',
-                    success: {
-                        render(){
-                            redirectAfterAuth(isPatient)
-                            return "Welcome!"
-                        }
-                    }
+                    success: "Welcome!"
                 }
             }
         )
@@ -145,7 +111,6 @@ export const register = createAsyncThunk(
                 messages: {
                     error: {
                         render({data}){
-                            console.log(data)
                              // @ts-ignore
                             if (data.code in errors){
                                 // @ts-ignore
@@ -157,7 +122,6 @@ export const register = createAsyncThunk(
                     pending: 'loading',
                     success: {
                         render(){
-                            redirectAfterAuth(!!userData.doctorCode)
                             return "Welcome!"
                         }
                     }

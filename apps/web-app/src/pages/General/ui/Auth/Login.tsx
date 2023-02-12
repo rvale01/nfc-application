@@ -1,9 +1,9 @@
 import React, { useRef, useState} from "react";
 import { Box, Button, Container, Text, Input, Toggle } from "ui-web";
 // @ts-ignore
-import { ReactComponent as WomanTick }  from '../../../assets/womanTick.svg'
-import { login } from "../redux/features/auth/thunk";
-import { useAppDispatch } from "../redux/store";
+import { ReactComponent as WomanTick }  from '../../../../assets/womanTick.svg'
+import { login } from "../../redux/features/auth/thunk";
+import { useAppDispatch } from "../../../store";
 
 export const Login = () => {    
     const dispatch = useAppDispatch()

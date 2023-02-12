@@ -14,18 +14,14 @@ const menuItems = [
     { path: 'prescriptions', label: 'Prescriptions', element: <div>Hello</div> },
     {
         path: "logout",
-        label: "Logout",
-        element: <div>Hello</div>
+        label: "Logout"
     },
 ]
 
 export const Patient = () => {
     const handleChange = (path: string) => {
-        if(path === "/logout"){
+        if(path === "logout"){
             auth.signOut()
-            .then(()=> {
-                window.location.href = '/'
-            })
         }else{
             window.location.href = "/#/patient/" + path
         }
