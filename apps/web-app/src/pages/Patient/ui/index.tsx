@@ -10,25 +10,25 @@ const menuItems = [
         label: "Personal Details",
         element: <PersonalDetails />
     }, 
+    { path: '/diseases', label: 'Diseases', element: <div>Hello</div> },
+    { path: '/prescriptions', label: 'Prescriptions', element: <div>Hello</div> },
     {
         path: "/logout",
         label: "Logout",
         element: <div>Hello</div>
     },
-    { path: '/diseases', label: 'Diseases', element: <div>Hello</div> },
-    { path: '/prescriptions', label: 'Prescriptions', element: <div>Hello</div> }
 ]
 
 export const Patient = () => {
     const handleChange = (path: string) => {
-        // if(path === "logout"){
+        if(path === "logout"){
             auth.signOut()
             .then(()=> {
                 window.location.href = '/'
             })
-        // }else{
-            // window.location.href = "/#/patient/#" + path
-        // }
+        }else{
+            window.location.href = "/#/patient/" + path
+        }
     }
 
     return(
@@ -39,7 +39,7 @@ export const Patient = () => {
         >
             <Routes>
                 {menuItems.map(item => (
-                    <Route key={item.path} path={"/personal-details"} element={<div>okay</div>}/>
+                    <Route key={item.path} path={"personal-details"} element={<div>okay yes</div>}/>
                 ))}
             </Routes>
         </DashboardLayout>

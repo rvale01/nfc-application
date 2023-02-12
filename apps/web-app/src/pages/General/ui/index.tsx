@@ -22,8 +22,8 @@ export const General = () => {
                     <Route path="/" element={<Home/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/register" element={<Register/>} />
-                    <Route path="/doctor" element={<div>okay</div>} />
-                    <Route path="/patient" element={<Patient/>} />
+                    <Route path="/doctor/*" element={<div>okay</div>} />
+                    <Route path="/patient/*" element={<Patient/>} />
                     <Route path="/patient-details/:patientId" element={<PatientDetails/>} />
                 </Routes>
             </HashRouter>

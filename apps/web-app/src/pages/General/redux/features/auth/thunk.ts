@@ -1,12 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { auth, db } from '../../../../../../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 import { showNotification } from 'ui-web';
 
+
+const redirectAfterAuth = (isPatient: boolean) => {
+    if(isPatient){
+        window.location.href = "/#/patient"
+    }else{
+        window.location.href = "/#/doctor"
+    }
+}
 interface loginUserI {
     email: string;
     password: string;
+    isPatient: boolean
 }
 
 const errors = {
@@ -21,12 +30,28 @@ const errors = {
     "default": "Something went wrong. Try again in a few minutes"
 }
 
+const loginFunc = async({email, password, isPatient}: loginUserI) => {
+    return new Promise(async (resolve, reject) => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then( async(res) => 
+            isPatient ?
+                await getDoc(doc(db, "patients", res.user.uid))
+                .then(() => resolve(""))
+                .catch((err)=> reject(err))
+            : await getDoc(doc(db, "doctors", res.user.uid))
+                .then(() => resolve(""))
+                .catch((err)=> reject(err))
+        ).catch(err=> {
+            reject(err)
+        })
+    })
+}
 export const login = createAsyncThunk(
     'auth/login',
-    async ({email, password}: loginUserI) => {
+    async ({email, password,isPatient}: loginUserI) => {
         showNotification(
             {
-                func: () => signInWithEmailAndPassword(auth, email, password), 
+                func: () => loginFunc({email, password, isPatient}), 
                 messages: {
                     error: {
                         render({data}){
@@ -39,13 +64,19 @@ export const login = createAsyncThunk(
                           }                  
                     },
                     pending: 'loading',
-                    success: 'Welcome!'
+                    success: {
+                        render(){
+                            redirectAfterAuth(isPatient)
+                            return "Welcome!"
+                        }
+                    }
                 }
             }
         )
         .then((userCredential) => {
             return userCredential.user;
         })
+        
     }
   )
 
@@ -110,7 +141,12 @@ export const register = createAsyncThunk(
                           }                  
                     },
                     pending: 'loading',
-                    success: 'Welcome!'
+                    success: {
+                        render(){
+                            redirectAfterAuth(!!userData.doctorCode)
+                            return "Welcome!"
+                        }
+                    }
                 }
             }
         )
