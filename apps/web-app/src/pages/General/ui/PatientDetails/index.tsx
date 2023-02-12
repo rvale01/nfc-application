@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { getPatientDetails } from '../../redux/features/patientDetails/thunk';
 import { useParams } from 'react-router-dom';
-import { DiseasesTable, PersonalDetailViews, PrescriptionsTable, Tabs } from 'ui-web';
+import { DiseasesTable, PatientPersonalDetailViews, PrescriptionsTable, Tabs } from 'ui-web';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { selectorPatientDetailsRequest } from '../../redux/features/patientDetails/selectors';
 // @ts-ignore
@@ -26,7 +26,7 @@ export const PatientDetails = () => {
                     {
                         label: "Personal Details",
                         key: 1,
-                        children: <PersonalDetailViews patient={patientDetails}/>
+                        children: <PatientPersonalDetailViews patient={patientDetails}/>
                     },
                     {
                         label: "Diseases",

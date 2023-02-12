@@ -2,20 +2,18 @@ import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
 import { Route, Routes } from "react-router-dom";
 import { auth } from "../../../../firebase";
-import { PersonalDetails } from "./PersonalDetails";
 
 const menuItems = [
     {
-        path: "personal-details",
-        label: "Personal Details",
-        element: <div>OKay</div>//<PersonalDetails />
+        path: "patients",
+        label: "patients",
+        element: <div>OKay</div>
     }, 
-    { path: 'diseases', label: 'Diseases', element: <div>Hello</div> },
-    { path: 'prescriptions', label: 'Prescriptions', element: <div>Hello</div> },
+    { path: 'add-patient', label: 'Add New Patient', element: <div>Hello</div> },
+    { path: 'settings', label: 'setting', element: <div>Hello</div> },
     {
         path: "logout",
         label: "Logout",
-        element: <div>Hello</div>
     },
 ]
 
@@ -27,7 +25,7 @@ export const Patient = () => {
                 window.location.href = '/'
             })
         }else{
-            window.location.href = "/#/patient/" + path
+            window.location.href = "/#/doctor/" + path
         }
     }
 

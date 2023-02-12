@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Container, Input, Select } from "ui-web";
 
 export const PersonalDetails = () => {
-    console.log("Personal details")
     return (
         <Container>
             <Input placeholder="Name" type="text" />

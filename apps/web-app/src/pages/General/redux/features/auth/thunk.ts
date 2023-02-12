@@ -36,11 +36,25 @@ const loginFunc = async({email, password, isPatient}: loginUserI) => {
         .then( async(res) => 
             isPatient ?
                 await getDoc(doc(db, "patients", res.user.uid))
-                .then(() => resolve(""))
+                .then((res2) => {
+                    if(res2.data() === undefined){
+                        reject("auth/user-not-found")
+                    }else{
+                        resolve("")
+                    }
+                })
                 .catch((err)=> reject(err))
             : await getDoc(doc(db, "doctors", res.user.uid))
-                .then(() => resolve(""))
-                .catch((err)=> reject(err))
+                .then((res2) => {
+                    if(res2.data() === undefined){
+                        reject("auth/user-not-found")
+                    }else{
+                        resolve("")
+                    }
+                })
+                .catch((err)=> {
+                    reject(err)
+                })
         ).catch(err=> {
             reject(err)
         })
