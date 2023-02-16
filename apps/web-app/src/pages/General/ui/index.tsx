@@ -16,6 +16,7 @@ import { SwitchView } from "./Auth/SwitchView";
 import { isTokenValid } from "../lib/isTokenValid";
 import { onAuthChange } from "../lib/onAuthChange";
 import { LoadingSpinner } from "ui-web";
+import { Doctor } from "../../Doctor/ui";
 
 interface PropsI {
     element:React.ReactElement;
@@ -65,7 +66,7 @@ export const General = () => {
                     <Route path="switch-view" element={<SwitchView />}/>
                     <Route
                         path="/doctor/*"
-                        element={<ProtectedRoute element={<div>okay</div>} />}
+                        element={<ProtectedRoute element={<Doctor/>} />}
                     />
                     <Route
                         path="/patient/*"

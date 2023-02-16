@@ -8,6 +8,7 @@ export { Notification } from "./components/atoms/Notification";
 export { showNotification } from "./components/atoms/Notification";
 export { Select } from './components/atoms/Select'
 export { Text } from './components/atoms/Text'
+export { Table } from "./components/atoms/Table";
 export { Tabs } from './components/atoms/Tabs'
 export { Toggle } from './components/atoms/Toggle'
 export { Input } from './components/atoms/Input'
