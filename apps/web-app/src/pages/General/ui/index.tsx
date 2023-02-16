@@ -15,19 +15,22 @@ import { Patient } from "../../Patient/ui";
 import { SwitchView } from "./Auth/SwitchView";
 import { isTokenValid } from "../lib/isTokenValid";
 import { onAuthChange } from "../lib/onAuthChange";
+import { LoadingSpinner } from "ui-web";
 
 interface PropsI {
     element:React.ReactElement;
 }
 
 export const General = () => {
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState<boolean | null>(null)
     useEffect(() => { 
         onAuthChange({setIsAuth: setIsAuth})
       }, []);
 
     const ProtectedRoute = ({ element }: PropsI) => {
-        
+        if(isAuth === null){
+            return <LoadingSpinner color="primary"/>
+        }
         return (isAuth && isTokenValid()) ? (
           <>
             {element}
@@ -38,6 +41,10 @@ export const General = () => {
     };
 
     const UnprotectedRoute = ({element}: PropsI) => { 
+        if(isAuth === null){
+            return <LoadingSpinner color="primary"/>
+        }
+
         return (isAuth && isTokenValid()) ? (
             <Navigate to={`/switch-view`} replace />
         ) : (

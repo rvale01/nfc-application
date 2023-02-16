@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { getPatientDetails } from '../General/redux/features/patientDetails/thunk';
+import { getPatientDetails } from './redux/thunk';
 import { useParams } from 'react-router-dom';
-import { DiseasesTable, PatientPersonalDetailViews, PrescriptionsTable, Tabs } from 'ui-web';
+import { DiseasesTable, LoadingSpinner, PatientPersonalDetailViews, PrescriptionsTable, Tabs } from 'ui-web';
 import { useAppDispatch, useAppSelector } from '../store';
-import { selectorPatientDetailsRequest } from '../General/redux/features/patientDetails/selectors';
+import { selectorPatientDetailsRequest } from './redux/selectors';
 // @ts-ignore
 import { ReactComponent as Logo }  from '../../../../assets/logo.svg'
 
@@ -26,7 +26,7 @@ export const PatientDetails = () => {
                     {
                         label: "Personal Details",
                         key: 1,
-                        children: <PatientPersonalDetailViews patient={patientDetails}/>
+                        children: <PatientPersonalDetailViews disabled patient={patientDetails}/>
                     },
                     {
                         label: "Diseases",
@@ -41,6 +41,8 @@ export const PatientDetails = () => {
                 ]}
             />
         )     
+    }else if(status === "pending"){
+        return(<LoadingSpinner color='primary' />)
     }
     return null
 }

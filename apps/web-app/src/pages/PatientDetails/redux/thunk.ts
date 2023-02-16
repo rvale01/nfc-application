@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { doc, getDoc } from "firebase/firestore";
-import { db } from '../../../../../../firebase';
+import { db } from '../../../../firebase';
 
 export const getPatientDetails = createAsyncThunk(
     'details/getPatientDetails',

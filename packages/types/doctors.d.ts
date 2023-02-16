@@ -1,12 +1,12 @@
 
-interface DoctorI {
-    address: String;
-    address_2: String;
-    doctor_number: String;
-    email: String;
-    id: String;
-    mobile: String;
-    name: String;
-    postcode: String;
-    surname: String;
+interface DoctorDetailsI {
+    name: string;
+    surname: string;
+    doctor_number: string;
+    id: string;
+    email: string;
+    mobile: string;
+    address: string;
+    address_2: string;
+    postcode: string;
 }

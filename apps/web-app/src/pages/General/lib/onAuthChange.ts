@@ -10,13 +10,17 @@ export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void
             localStorage.setItem('access_token', token);
             localStorage.setItem('access_token_expiration', expirationDate.toISOString());
             localStorage.setItem('user_id', firebaseUser.uid)
-            window.location.href="/#/switch-view"
+            if(!window.location.hash.includes("#/patient-details/")){
+              window.location.href="/#/switch-view"
+            }
           });
         } else {
           setIsAuth(false)
           localStorage.removeItem('access_token');
           localStorage.removeItem('access_token_expiration');
-          window.location.href = '/#/login'
+          if(!window.location.hash.includes("#/patient-details/")){
+            window.location.href = '/#/login'
+          }
         }
       });
 }

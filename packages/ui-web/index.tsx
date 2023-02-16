@@ -18,6 +18,7 @@ export { LoadingSpinner } from './components/atoms/Loading'
 export { Carousel } from './components/molecules/Carousel'
 export { DashboardLayout } from './components/molecules/DashboardLayout'
 export { HomepageLayout } from './components/molecules/HomepageLayout'
-export { PersonalDetailViews } from "./components/molecules/PersonalDetails"
+export { PatientPersonalDetailViews } from "./components/molecules/PatientPersonalDetail"
 export { DiseasesTable } from './components/molecules/DiseasesTable'
+export { DoctorPersonalDetailViews } from "./components/molecules/DoctorPersonalDetails";
 export { PrescriptionsTable } from './components/molecules/PrescriptionTable'

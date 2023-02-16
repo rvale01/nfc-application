@@ -7,9 +7,9 @@ import { showNotification } from 'ui-web';
 interface loginUserI {
     email: string;
     password: string;
-    isPatient: boolean
 }
 
+//TODO: move this list to another file
 const errors = {
     "auth/invalid-email": "Email or password wrong. Try again.",
     "auth/wrong-password": "Email or password wrong. Try again.",
@@ -22,7 +22,7 @@ const errors = {
     "default": "Something went wrong. Try again in a few minutes"
 }
 
-const loginFunc = async({email, password, isPatient}: loginUserI) => {
+const loginFunc = async({email, password}: loginUserI) => {
     return new Promise(async (resolve, reject) => {
         signInWithEmailAndPassword(auth, email, password)
             .then( () => resolve(""))
@@ -33,10 +33,10 @@ const loginFunc = async({email, password, isPatient}: loginUserI) => {
 }
 export const login = createAsyncThunk(
     'auth/login',
-    async ({email, password,isPatient}: loginUserI) => {
+    async ({email, password}: loginUserI) => {
         showNotification(
             {
-                func: () => loginFunc({email, password, isPatient}), 
+                func: () => loginFunc({email, password}), 
                 messages: {
                     error: {
                         render({data}){

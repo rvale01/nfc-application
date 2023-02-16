@@ -1,17 +1,22 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { auth } from "../../../../firebase";
 import { PersonalDetails } from "./PersonalDetails";
+import { useAppDispatch } from "../../store";
+import { getPatientDetails } from "../redux/thunk";
 
 const menuItems = [
     {
         path: "personal-details",
         label: "Personal Details",
-        element: <div>OKay</div>//<PersonalDetails />
+        element: <PersonalDetails />
     }, 
-    { path: 'diseases', label: 'Diseases', element: <div>Hello</div> },
-    { path: 'prescriptions', label: 'Prescriptions', element: <div>Hello</div> },
+    {
+        path: "doctors",
+        label: "Doctors",
+        element: <div>Doctor</div>
+    }, 
     {
         path: "logout",
         label: "Logout"
@@ -19,11 +24,20 @@ const menuItems = [
 ]
 
 export const Patient = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch()
+
+    useEffect(()=> {
+        navigate(`/patient/personal-details`)
+        dispatch(getPatientDetails())
+    }, [])
+
+
     const handleChange = (path: string) => {
         if(path === "logout"){
             auth.signOut()
         }else{
-            window.location.href = "/#/patient/" + path
+            navigate(`/patient/${path}`)
         }
     }
 
