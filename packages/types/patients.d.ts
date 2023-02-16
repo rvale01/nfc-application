@@ -27,4 +27,5 @@ interface PatientDetailsI {
     sex: "F" | "M" | "other" | "do not want to say";
     prescriptions: Prescription[];
     diseases: Diseases[];
+    doctors_allowed: string[]
 }
