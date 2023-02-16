@@ -25,7 +25,7 @@ interface PatientDetailsI {
     mobile: string;
     nhs_number: string;
     sex: "F" | "M" | "other" | "do not want to say";
-    prescriptions: Prescription[];
-    diseases: Diseases[];
-    doctors_allowed: string[]
+    prescriptions: PrescriptionI[];
+    diseases: DiseasesI[];
+    doctors_allowed: BriefDoctorDetailsI[]
 }

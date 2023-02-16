@@ -10,3 +10,9 @@ interface DoctorDetailsI {
     address_2: string;
     postcode: string;
 }
+
+interface BriefDoctorDetailsI {
+    full_name: string;
+    email: string;
+    mobile: string;
+}
