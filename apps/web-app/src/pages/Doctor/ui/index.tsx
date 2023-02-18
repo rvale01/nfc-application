@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { auth } from "../../../../firebase";
+import { useAppDispatch } from "../../store";
+import { getDoctorDetails } from "../redux/thunk";
+import { Settings } from "./Settings";
 
 const menuItems = [
     {
         path: "patients",
-        label: "patients",
+        label: "Patients",
         element: <div>OKay</div>
     }, 
     { path: 'add-patient', label: 'Add New Patient', element: <div>Hello</div> },
-    { path: 'settings', label: 'setting', element: <div>Hello</div> },
+    { path: 'settings', label: 'Setting', element: <Settings/> },
     {
         path: "logout",
         label: "Logout",
@@ -18,14 +21,19 @@ const menuItems = [
 ]
 
 export const Doctor = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch()
+
+    useEffect(()=> {
+        navigate(`/doctor/patients`)
+        dispatch(getDoctorDetails())
+    }, [])
+
     const handleChange = (path: string) => {
-        if(path === "/logout"){
+        if(path === "logout"){
             auth.signOut()
-            .then(()=> {
-                window.location.href = '/'
-            })
         }else{
-            window.location.href = "/#/doctor/" + path
+            navigate(`/doctor/${path}`)
         }
     }
 

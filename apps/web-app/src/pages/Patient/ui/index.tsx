@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { auth } from "../../../../firebase";
 import { PersonalDetails } from "./PersonalDetails";
 import { useAppDispatch } from "../../store";
 import { getPatientDetails } from "../redux/thunk";
+import { DoctorsDetailsList } from "./DoctorsList";
 
 const menuItems = [
     {
@@ -15,7 +16,7 @@ const menuItems = [
     {
         path: "doctors",
         label: "Doctors",
-        element: <div>Doctor</div>
+        element: <DoctorsDetailsList/>
     }, 
     {
         path: "logout",

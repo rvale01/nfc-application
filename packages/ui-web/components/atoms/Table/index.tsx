@@ -2,14 +2,15 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import type { ColumnsType } from 'antd/es/table';
 import { Table as TableEl } from 'antd';
 export interface TableI {
-    data?: {
+    dataSource?: {
         key: string | number,
         [val: string]: any
     }[]
-    columns: ColumnsType<any>
+    columns: ColumnsType<any>;
+    showCheckboxes?: boolean;
 }
 
-export const Table = forwardRef(({columns, data}: TableI, ref) => {
+export const Table = forwardRef(({columns, dataSource, showCheckboxes = false}: TableI, ref) => {
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
     const onSelectChange = (selectedRowKeys: []) => {
@@ -22,13 +23,13 @@ export const Table = forwardRef(({columns, data}: TableI, ref) => {
     
     
     return (
-        <Table 
-            rowSelection={{
+        <TableEl 
+            rowSelection={showCheckboxes ? {
                 selectedRowKeys,
                 onChange: onSelectChange,
-            }} 
+            } : null} 
             columns={columns} 
-            dataSource={data} 
+            dataSource={dataSource} 
         />
     )
 })

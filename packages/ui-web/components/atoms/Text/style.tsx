@@ -15,4 +15,5 @@ export const Text = styled.p`
   font-size: ${(props: TextI) => fontSize[props.size]};
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   text-align: ${(props: TextI) => props.textAlign ?? 'inherit'};
+  margin: 0px;
 `;

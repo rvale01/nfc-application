@@ -23,3 +23,4 @@ export { PatientPersonalDetailViews } from "./components/molecules/PatientPerson
 export { DiseasesTable } from './components/molecules/DiseasesTable'
 export { DoctorPersonalDetailViews } from "./components/molecules/DoctorPersonalDetails";
 export { PrescriptionsTable } from './components/molecules/PrescriptionTable'
+export { DoctorsList } from "./components/molecules/DoctorsList";

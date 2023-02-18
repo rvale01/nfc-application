@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 import { getPatientDetails } from './thunk'
 
 export interface InitialStateI {
@@ -13,7 +12,7 @@ const initialState: InitialStateI = {
     patientDetailsRequest: {} as InitialStateI['patientDetailsRequest']
 }
   
-export const authSlice = createSlice({
+export const patientSlice = createSlice({
     name: 'patient',
     initialState,
     reducers: {},
@@ -33,5 +32,5 @@ export const authSlice = createSlice({
 })
   
   
-export default authSlice.reducer
+export default patientSlice.reducer
   

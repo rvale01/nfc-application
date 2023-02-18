@@ -9,6 +9,7 @@ interface DoctorDetailsI {
     address: string;
     address_2: string;
     postcode: string;
+    patients: string[]
 }
 
 interface BriefDoctorDetailsI {
