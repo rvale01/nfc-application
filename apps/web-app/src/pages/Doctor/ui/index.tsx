@@ -5,6 +5,7 @@ import { auth } from "../../../../firebase";
 import { useAppDispatch } from "../../store";
 import { getDoctorDetails } from "../redux/thunk";
 import { Settings } from "./Settings";
+import { AddPatient } from "./AddPatient";
 
 const menuItems = [
     {
@@ -12,7 +13,7 @@ const menuItems = [
         label: "Patients",
         element: <div>OKay</div>
     }, 
-    { path: 'add-patient', label: 'Add New Patient', element: <div>Hello</div> },
+    { path: 'add-patient', label: 'Add New Patient', element: <AddPatient/> },
     { path: 'settings', label: 'Setting', element: <Settings/> },
     {
         path: "logout",

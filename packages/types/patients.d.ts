@@ -1,7 +1,6 @@
 interface DiseasesI {
     name: string;
     notes: string;
-    id: number
 }
 
 interface PrescriptionI {
@@ -27,5 +26,6 @@ interface PatientDetailsI {
     sex: "F" | "M" | "other" | "do not want to say";
     prescriptions: PrescriptionI[];
     diseases: DiseasesI[];
-    doctors_allowed: BriefDoctorDetailsI[]
+    doctors_allowed: BriefDoctorDetailsI[];
+    shared_code: string;
 }

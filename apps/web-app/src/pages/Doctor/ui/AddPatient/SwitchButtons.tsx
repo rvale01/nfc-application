@@ -7,8 +7,8 @@ interface SwitchButtonsI {
 }
 export const SwitchButtons = ({ onChange }: SwitchButtonsI) => {
     return (
-        <Box direction="column" gap="medium">
-            <Button label="Create Patient" onClick={()=> onChange("createPatient")}/>
+        <Box direction="column" gap="medium" verticalAlign="center" horizontalAlign="center" width="100%">
+            <Button label="Create Patient" onClick={()=> onChange("createPatient")} type="secondary" />
             <Button label="Use Patient's Share Code" onClick={()=> onChange("byCode")}/>
         </Box>
     )

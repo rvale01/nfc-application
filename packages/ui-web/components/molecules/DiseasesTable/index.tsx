@@ -8,7 +8,7 @@ export const DiseasesTable = ({diseases}:DiseasesTableI) => {
 
     return (
         <Table
-            dataSource={diseases?.map((el)=> {return({...el, key: el.id})})}
+            dataSource={diseases?.map((el, i)=> {return({...el, key: i})})}
             columns={[
                 {
                     title: 'Name',

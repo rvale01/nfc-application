@@ -14,7 +14,7 @@ export const DashboardLayout = ({menuItems, activeItem, onChange, children}: Das
 
     return (
         <Container padding="large" height="90%">
-            <Box direction="row" gap="medium" height="100%">
+            <Box direction="row" gap="medium" height="100%" width="100%">
                 <SideMenu>
                     {menuItems.map((value, i)=> {
                         return(
@@ -22,7 +22,7 @@ export const DashboardLayout = ({menuItems, activeItem, onChange, children}: Das
                         )
                     })}
                 </SideMenu>
-                <div>{children}</div>
+                {children}
             </Box>
         </Container>
     )
