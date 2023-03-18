@@ -14,6 +14,7 @@ export { Toggle } from './components/atoms/Toggle'
 export { Input } from './components/atoms/Input'
 export { Grid } from './components/atoms/Grid'
 export { LoadingSpinner } from './components/atoms/Loading'
+export { Modal } from './components/atoms/Modal'
 
 // modules
 export { Carousel } from './components/molecules/Carousel'
