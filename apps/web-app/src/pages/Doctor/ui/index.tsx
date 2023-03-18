@@ -6,12 +6,14 @@ import { useAppDispatch } from "../../store";
 import { getDoctorDetails } from "../redux/thunk";
 import { Settings } from "./Settings";
 import { AddPatient } from "./AddPatient";
+import { Patients } from "./Patients";
+import { PatientDetails } from "./Patients/PatientDetails";
 
 const menuItems = [
     {
         path: "patients",
         label: "Patients",
-        element: <div>OKay</div>
+        element: <Patients/>
     }, 
     { path: 'add-patient', label: 'Add New Patient', element: <AddPatient/> },
     { path: 'settings', label: 'Setting', element: <Settings/> },
@@ -48,6 +50,7 @@ export const Doctor = () => {
                 {menuItems.map(item => (
                     <Route key={item.path} path={item.path} element={item.element}/>
                 ))}
+                <Route key={"patient-details"} path={"patient-details/:id"} element={<PatientDetails/>}/>
             </Routes>
         </DashboardLayout>
     )

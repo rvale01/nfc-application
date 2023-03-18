@@ -3,7 +3,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { Table as TableEl } from 'antd';
 export interface TableI {
     dataSource?: {
-        key: string | number,
+        key?: string | number,
         [val: string]: any
     }[]
     columns: ColumnsType<any>;

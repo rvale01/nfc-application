@@ -1,18 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { addPatientByCode, getDoctorDetails } from './thunk'
+import { getDoctorDetails, getPatientsList } from './thunk'
 
 export interface InitialStateI {
     doctorsDetailsRequest: {
         data: DoctorDetailsI,
         status: StatusI
     },
-    addPatientByCodeReq: {
-        status: StatusI
+    getPatientsList: {
+        status: StatusI;
+        data: PatientDetailsI[]
     },
 }
 
 const initialState: InitialStateI = {
-    doctorsDetailsRequest: {} as InitialStateI['doctorsDetailsRequest']
+    doctorsDetailsRequest: {} as InitialStateI['doctorsDetailsRequest'],
+    getPatientsList: {} as InitialStateI['getPatientsList']
 }
 
 export const doctorSlice = createSlice({
@@ -33,14 +35,15 @@ export const doctorSlice = createSlice({
             })
 
         builder
-            .addCase(addPatientByCode.fulfilled, (state, action)=> {
-                state.addPatientByCodeReq.status = 'fulfilled'
+            .addCase(getPatientsList.fulfilled, (state, action)=> {
+                state.getPatientsList.status = 'fulfilled'
+                state.getPatientsList.data = action.payload
             })
-            .addCase(addPatientByCode.pending, (state)=> {
-                state.doctorsDetailsRequest.status = 'pending'
+            .addCase(getPatientsList.pending, (state)=> {
+                state.getPatientsList.status = 'pending'
             })
-            .addCase(addPatientByCode.rejected, (state, action)=> {
-                state.doctorsDetailsRequest.status = 'rejected'
+            .addCase(getPatientsList.rejected, (state)=> {
+                state.getPatientsList.status = 'rejected'
             })
 
     }

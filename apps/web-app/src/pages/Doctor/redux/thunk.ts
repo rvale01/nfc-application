@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { doc, getDoc, setDoc, query, where, collection, getDocs, arrayUnion  } from "firebase/firestore";
+import { doc, getDoc, setDoc, query, where, collection, getDocs, arrayUnion, deleteDoc, arrayRemove} from "firebase/firestore";
 import { showNotification } from 'ui-web';
 import { db } from '../../../../firebase';
 
 export const getDoctorDetails = createAsyncThunk(
     'details/getDoctorDetails',
     async () => {
-        const userId = localStorage.getItem('user_id') as string
-        const docRef = doc(db, "doctors", userId);
+        const usersId = localStorage.getItem('user_id') as string
+        const docRef = doc(db, "doctors", usersId);
         const data = (await getDoc(docRef));
         return data.data() as DoctorDetailsI
     }
@@ -15,9 +15,9 @@ export const getDoctorDetails = createAsyncThunk(
 
 const updateDocDetailsFunc = async(data: DoctorDetailsI) => {
     return new Promise(async (resolve, reject) => {
-        const userId = localStorage.getItem('user_id') as string
+        const usersId = localStorage.getItem('user_id') as string
         await setDoc(
-            doc(db, "doctors", userId),data) 
+            doc(db, "doctors", usersId),data) 
                 .then( () => resolve(""))
                 .catch(err=> {
                     reject(err)
@@ -46,7 +46,7 @@ export const updateDocDetails = createAsyncThunk(
 
 const addPatientByCodeFunc = async(userCode: string) => {
     // get the patient with the share code
-    const q = query(collection(db, "patients"), where("shared_code", "==", code));
+    const q = query(collection(db, "patients"), where("shared_code", "==", userCode));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async(patientDoc) => {
         const doctorId = localStorage.getItem("user_id") ?? ''
@@ -60,7 +60,7 @@ const addPatientByCodeFunc = async(userCode: string) => {
 }
 
 export const addPatientByCode =  createAsyncThunk(
-    'doctor/updateDocDetails',
+    'doctor/addPatientByCode',
     async (code: string) => {
         showNotification(
             {
@@ -80,5 +80,56 @@ export const addPatientByCode =  createAsyncThunk(
         .then((userCredential) => {
             return userCredential.user;
         })
+    }
+)
+
+export const getPatientsList = createAsyncThunk(
+    'doctor/getPatientsList',
+    async () => {
+        const doctorId = localStorage.getItem("user_id") ?? ''
+        const patientsRef = doc(db, "patient_doctor_relation", doctorId);
+        const patientsId = (await getDoc(patientsRef)).data()?.patients
+        
+        if(patientsId){
+            const q = query(collection(db, "patients"), where("__name__", "in", patientsId));
+            
+            const querySnapshot = await getDocs(q);
+            let patientsList:PatientDetailsI[] = []
+            querySnapshot.forEach(async(patientDoc) => {
+                patientsList.push(patientDoc.data() as PatientDetailsI)
+            });
+            return patientsList
+        }else {
+            return []
+        }
+    }
+)
+
+const removePatientsFunc = async(usersId: string[]) => {
+    try {
+        const doctorId = localStorage.getItem("user_id") ?? ''
+        const queryRef = doc(db, "patient_doctor_relation", doctorId);
+
+        console.log(usersId)
+        await setDoc(queryRef, {
+            patients: arrayRemove(...usersId)
+        }, { merge: true });
+    }catch(e){
+        console.log(e)
+    }
+}
+export const removePatients = createAsyncThunk(
+    'doctor/removePatients',
+    async (usersId: string[]) => {
+        showNotification(
+            {
+                func: () =>  removePatientsFunc(usersId),
+                messages: {
+                    error: "Something went Wrong! Try again later",
+                    pending: 'Loading',
+                    success: "Patients deleted successfully"
+                }
+            }
+        )
     }
 )

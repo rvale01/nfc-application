@@ -27,4 +27,5 @@ interface PatientDetailsI {
     prescriptions: PrescriptionI[];
     diseases: DiseasesI[];
     shared_code: string;
+    storage_id: string;
 }
