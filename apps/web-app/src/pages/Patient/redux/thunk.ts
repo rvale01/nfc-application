@@ -33,8 +33,8 @@ export const updateDetails = createAsyncThunk(
                 func: () =>  updateDetailsFunc(data),
                 messages: {
                     error: "Something went Wrong! Try again later",
-                    pending: 'loading',
-                    success: "Welcome!"
+                    pending: 'Loading',
+                    success: "Details updated!"
                 }
             }
         )

@@ -12,21 +12,23 @@ export const Settings = () => {
         dispatch(updateDocDetails(data))
     }
     if(status === 'fulfilled'){
-    return (
-        <Box gap="medium" direction="column">
-            <Text
-                text="My Details"
-                fontWeight="bold"
-                size="large"
-                color="black"
-            />
+        return (
+            <Box gap="medium" direction="column">
+                <Text
+                    text="My Details"
+                    fontWeight="bold"
+                    size="large"
+                    color="black"
+                />
 
-            <DoctorPersonalDetailViews
-                doctor={doctorDetails}
-            />
+                <DoctorPersonalDetailViews
+                    doctor={doctorDetails}
+                    onSave={onChangeDetails}
+                />
 
-        </Box>
-    )} else if(status === "pending"){
+            </Box>
+        )
+    } else if(status === "pending"){
         return(<LoadingSpinner color='primary' />)
     }
 

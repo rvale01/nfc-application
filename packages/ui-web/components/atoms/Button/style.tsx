@@ -22,5 +22,5 @@ export const Button = styled.button`
   font-size: ${fontSize.small};
   width: fit-content;
   text-decoration: ${(props: ButtonI) => (props.type === 'link' ? 'underline' : 'none')};
-  border: ${(props: ButtonI) => props.type !== 'link' ? `1px solid ${backgroundButton.primary}` : null }
+  border: ${(props: ButtonI) => props.type !== 'link' ? `1px solid ${backgroundButton.primary}` : 'none' }
 `;

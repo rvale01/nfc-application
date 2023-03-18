@@ -26,6 +26,5 @@ interface PatientDetailsI {
     sex: "F" | "M" | "other" | "do not want to say";
     prescriptions: PrescriptionI[];
     diseases: DiseasesI[];
-    doctors_allowed: BriefDoctorDetailsI[];
     shared_code: string;
 }

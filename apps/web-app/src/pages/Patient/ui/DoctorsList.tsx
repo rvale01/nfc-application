@@ -16,9 +16,10 @@ export const DoctorsDetailsList = () => {
                     size="large"
                     color="black"
                 />
-                <DoctorsList
+                {/* TODO: fix this */}
+                {/* <DoctorsList
                     doctorsDetails={patientDetails.doctors_allowed}
-                />
+                /> */}
             </Box>
         )
     }else if(status === "pending"){

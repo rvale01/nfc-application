@@ -12,8 +12,8 @@ interface DoctorDetailsI {
     patients: string[]
 }
 
-interface BriefDoctorDetailsI {
-    full_name: string;
-    email: string;
-    mobile: string;
-}
+// interface BriefDoctorDetailsI {
+//     full_name: string;
+//     email: string;
+//     mobile: string;
+// }

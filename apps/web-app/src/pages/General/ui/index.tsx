@@ -45,7 +45,6 @@ export const General = () => {
         if(isAuth === null){
             return <LoadingSpinner color="primary"/>
         }
-
         return (isAuth && isTokenValid()) ? (
             <Navigate to={`/switch-view`} replace />
         ) : (
