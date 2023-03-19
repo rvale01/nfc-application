@@ -1,0 +1,15 @@
+{
+  "name": "shared-functions",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "firebase": "^9.18.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "typescript": "^4.9.3"
+  }
+}
