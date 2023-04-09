@@ -26,8 +26,11 @@ export const Table = forwardRef(({columns, dataSource, showCheckboxes = false}: 
         <TableEl 
             rowSelection={showCheckboxes ? {
                 selectedRowKeys,
-                onChange: onSelectChange,
-            } : null} 
+                onChange:  (newSelectedRowKeys, selectedRows) => {
+                    console.log(newSelectedRowKeys)
+                    setSelectedRowKeys(newSelectedRowKeys);
+                  },
+            } : undefined} 
             columns={columns} 
             dataSource={dataSource} 
         />

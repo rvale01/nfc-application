@@ -3,6 +3,6 @@
   "compilerOptions": {
     "lib": ["dom"]
   },
-  "include": ["src", "../../packages/types"],
+  "include": ["../types"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

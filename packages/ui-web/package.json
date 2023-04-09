@@ -33,8 +33,10 @@
   "_id": "ui-web@0.0.0",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@types/uuid": "^9.0.1",
     "antd": "^5.1.6",
     "react-toastify": "^9.1.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.0"
   }
 }

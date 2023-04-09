@@ -19,6 +19,7 @@ export const Patients = () => {
 
     const handleDeletePatients = () => {
         const selectedPatients = tableRef?.current.getSelectedRowKeys() as PatientDetailsI[]
+        console.log(selectedPatients)
         dispatch(removePatients(selectedPatients))
     }
 
@@ -66,7 +67,7 @@ export const Patients = () => {
                                 title: '',
                                 dataIndex: '',
                                 render: (data) => (
-                                    <Button label="Details" onClick={()=> navigate(`/doctor/patient-details/${data.id}`)} type='link'/>
+                                    <Button label="Details" onClick={()=> navigate(`/doctor/patient-details/${data.storage_id}`)} type='link'/>
                                   ),
                             }
                         ]}

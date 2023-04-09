@@ -8,8 +8,7 @@ import styled from 'styled-components';
 
 
 interface ButtonI {
-    type: 'link' | 'primary' | 'secondary' 
-    // | 'danger';
+    type: 'link' | 'primary' | 'secondary' | 'danger';
 }
 
 export const Button = styled.button`
@@ -22,5 +21,5 @@ export const Button = styled.button`
   font-size: ${fontSize.small};
   width: fit-content;
   text-decoration: ${(props: ButtonI) => (props.type === 'link' ? 'underline' : 'none')};
-  border: ${(props: ButtonI) => props.type !== 'link' ? `1px solid ${backgroundButton.primary}` : 'none' }
+  border: ${(props: ButtonI) => props.type !== 'link' && props.type !== "danger" ? `1px solid ${backgroundButton.primary}` : 'none' }
 `;

@@ -50,7 +50,7 @@ export const Doctor = () => {
                 {menuItems.map(item => (
                     <Route key={item.path} path={item.path} element={item.element}/>
                 ))}
-                <Route key={"patient-details"} path={"patient-details/:id"} element={<PatientDetails/>}/>
+                <Route key={"patient-details"} path={"patient-details/:storage_id"} element={<PatientDetails/>}/>
             </Routes>
         </DashboardLayout>
     )

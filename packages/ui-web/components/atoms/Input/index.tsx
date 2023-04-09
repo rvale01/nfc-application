@@ -17,8 +17,7 @@ export const Input = forwardRef(({ defaultValue, name, type, placeholder, onBlur
             ref={ref}
             name={name}
             defaultValue={defaultValue}
-            // @ts-ignore
-            onBlur={(e) => onBlur({value: e.target.value, name: e.target.name ?? ''})}
+            onBlur={(e) => onBlur && onBlur({value: e.target.value, name: e.target.name ?? ''})}
             type={type}
             placeholder={placeholder}
             disabled={disabled}

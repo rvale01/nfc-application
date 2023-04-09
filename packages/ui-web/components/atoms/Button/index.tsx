@@ -3,8 +3,7 @@ import { Button as ButtonEl} from "./style";
 export interface ButtonI {
     label: string;
     disabled?: boolean;
-    type?: 'link' | 'primary' | 'secondary' 
-    // | 'danger';
+    type?: 'link' | 'primary' | 'secondary' | 'danger';
     onClick: () => void;
 }
 

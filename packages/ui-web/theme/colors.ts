@@ -5,5 +5,6 @@ export const colors = {
     transparent: 'transparent',
     black: 'black',
     border: '#7D7D7D',
-    selectedItem: "#408CFF"
+    selectedItem: "#408CFF",
+    danger: "#EB4F4F"
 }

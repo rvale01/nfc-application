@@ -1,6 +1,7 @@
 interface DiseasesI {
     name: string;
     notes: string;
+    id: string;
 }
 
 interface PrescriptionI {

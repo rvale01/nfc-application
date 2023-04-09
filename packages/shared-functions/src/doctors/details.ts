@@ -7,7 +7,7 @@ export const getDoctorDetails = async (userId: string) => {
     return data.data() as DoctorDetailsI
 }
 
-export const updateDocDetailsFunc = async(data: DoctorDetailsI) => {
+export const updateDocDetailsFunc = (data: DoctorDetailsI) => {
     return new Promise(async (resolve, reject) => {
         const usersId = localStorage.getItem('user_id') as string
         await setDoc(

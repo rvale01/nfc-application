@@ -63,14 +63,19 @@ export const getPatientsList = createAsyncThunk(
 
 export const removePatients = createAsyncThunk(
     'doctor/removePatients',
-    async (usersId: string[]) => {
+    async (usersId: string[], {dispatch}) => {
         showNotification(
             {
                 func: () =>  removePatientsFunc(usersId),
                 messages: {
                     error: "Something went Wrong! Try again later",
                     pending: 'Loading',
-                    success: "Patients deleted successfully"
+                    success: {
+                        render(){
+                            dispatch(getPatientsList())
+                            return "Patients deleted successfully!"
+                        }
+                    }
                 }
             }
         )

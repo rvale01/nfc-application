@@ -38,12 +38,12 @@ export const removePatientsFunc = async(usersId: string[]) => {
     try {
         const doctorId = localStorage.getItem("user_id") ?? ''
         const queryRef = doc(db, "patient_doctor_relation", doctorId);
-
-        console.log(usersId)
+        
         await setDoc(queryRef, {
             patients: arrayRemove(...usersId)
         }, { merge: true });
     }catch(e){
         console.log(e)
+        throw e
     }
 }
