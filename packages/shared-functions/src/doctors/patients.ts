@@ -1,4 +1,4 @@
-import { doc, query, getDocs, collection, where, arrayUnion, setDoc, getDoc, arrayRemove } from "firebase/firestore";
+import { doc, query, getDocs, collection, where, arrayUnion, setDoc, getDoc, arrayRemove, updateDoc } from "firebase/firestore";
 import { db } from "../firestore";
 
 export const addPatientByCodeFunc = async(userCode: string) => {

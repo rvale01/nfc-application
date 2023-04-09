@@ -2,21 +2,22 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { DiseasesTable, PatientPersonalDetailViews, PrescriptionsTable, Tabs } from "ui-web";
 import { useParams } from 'react-router-dom';
-import { RootState } from "../../../store";
+import { RootState, useAppDispatch } from "../../../store";
 import { selectorPatientDetails } from "../../redux/selectors";
 import { addNewDisease, updateDisease } from "shared-functions";
+import { updatePatientDetails } from "../../redux/thunk";
 
 export const PatientDetails = () => {
     const { storage_id } = useParams();
     const patientDetails = useSelector((state: RootState) => selectorPatientDetails(state)(storage_id ?? ''))
-
+    const dispatch = useAppDispatch()
     return (
         <Tabs
                 items={[
                     {
                         label: "Personal Details",
                         key: 1,
-                        children: <PatientPersonalDetailViews disabled patient={patientDetails}/>
+                        children: <PatientPersonalDetailViews disabled={false} patient={patientDetails} onSave={(patient)=> dispatch(updatePatientDetails(patient))}/>
                     },
                     {
                         label: "Diseases",

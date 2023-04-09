@@ -19,7 +19,6 @@ export const Patients = () => {
 
     const handleDeletePatients = () => {
         const selectedPatients = tableRef?.current.getSelectedRowKeys() as PatientDetailsI[]
-        console.log(selectedPatients)
         dispatch(removePatients(selectedPatients))
     }
 

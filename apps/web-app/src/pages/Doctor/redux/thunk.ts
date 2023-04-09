@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { addPatientByCodeFunc, getDoctorDetails as getDetailsFunc, updateDocDetailsFunc, getPatientsList as getPatientsListFun, removePatientsFunc } from 'shared-functions';
+import { addPatientByCodeFunc, getDoctorDetails as getDetailsFunc, updateDocDetailsFunc, getPatientsList as getPatientsListFun, removePatientsFunc, updatePatientDetailsFunc } from 'shared-functions';
 import { showNotification } from 'ui-web';
 
 export const getDoctorDetails = createAsyncThunk(
@@ -74,6 +74,26 @@ export const removePatients = createAsyncThunk(
                         render(){
                             dispatch(getPatientsList())
                             return "Patients deleted successfully!"
+                        }
+                    }
+                }
+            }
+        )
+    }
+)
+
+export const updatePatientDetails = createAsyncThunk(
+    'doctor/removePatients',
+    async (data: PatientDetailsI) => {
+        showNotification(
+            {
+                func: () =>  updatePatientDetailsFunc(data),
+                messages: {
+                    error: "Something went Wrong! Try again later",
+                    pending: 'Loading',
+                    success: {
+                        render(){
+                            return "Patient updated successfully!"
                         }
                     }
                 }
