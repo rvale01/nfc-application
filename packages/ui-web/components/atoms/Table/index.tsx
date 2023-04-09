@@ -12,11 +12,7 @@ export interface TableI {
 
 export const Table = forwardRef(({columns, dataSource, showCheckboxes = false}: TableI, ref) => {
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-
-    const onSelectChange = (selectedRowKeys: []) => {
-        setSelectedRowKeys(selectedRowKeys);
-    };
-
+    
     useImperativeHandle(ref, () => ({
         getSelectedRowKeys: () => selectedRowKeys,
       }));
@@ -27,7 +23,6 @@ export const Table = forwardRef(({columns, dataSource, showCheckboxes = false}: 
             rowSelection={showCheckboxes ? {
                 selectedRowKeys,
                 onChange:  (newSelectedRowKeys, selectedRows) => {
-                    console.log(newSelectedRowKeys)
                     setSelectedRowKeys(newSelectedRowKeys);
                   },
             } : undefined} 

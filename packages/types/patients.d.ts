@@ -10,6 +10,7 @@ interface PrescriptionI {
     name: string;
     notes: string;
     recurring: boolean;
+    id: string;
 }
 
 interface PatientDetailsI {

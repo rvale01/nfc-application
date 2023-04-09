@@ -1,10 +1,10 @@
 import { db } from '../firestore';
-import { doc, setDoc, arrayUnion, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
+import { doc, arrayUnion, getDoc, updateDoc, arrayRemove, setDoc } from "firebase/firestore";
 
-export const addNewDisease = async (disease: DiseasesI, patientId: string) => {
+export const addNewDiseaseFunc = async (disease: DiseasesI, patientId: string) => {
     return new Promise(async (resolve, reject) => {
         const patientRef = doc(db, 'patients', patientId);
-        await setDoc(
+        await updateDoc(
             patientRef,
             {
                 diseases: arrayUnion(disease)
@@ -16,7 +16,7 @@ export const addNewDisease = async (disease: DiseasesI, patientId: string) => {
     })
 }
 
-export const updateDisease = async (updatedDisease: DiseasesI, patientId: string) => {
+export const updateDiseaseFunc = async (updatedDisease: DiseasesI, patientId: string) => {
   return new Promise(async (resolve, reject) => {
     try {
       const patientRef = doc(db, 'patients', patientId);
@@ -39,6 +39,36 @@ export const updateDisease = async (updatedDisease: DiseasesI, patientId: string
           resolve("");
         } else {
           reject(`Disease with id ${updatedDisease.id} not found`);
+        }
+      } else {
+        reject(`Patient with id ${patientId} not found`);
+      }
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+export const deleteDiseaseFunc = async (diseasesIds: string[], patientId: string) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const patientRef = doc(db, 'patients', patientId);
+      const patientSnap = await getDoc(patientRef);
+      const patientData = patientSnap.data();
+
+      if (patientData) {
+        const diseases = patientData.diseases;
+        const diseasesToDelete = diseases.filter((disease: DiseasesI) => diseasesIds.includes(disease.id));
+
+        if (diseasesToDelete.length > 0) {
+          const updatedDiseases = diseases.filter((disease: DiseasesI) => !diseasesIds.includes(disease.id));
+          await updateDoc(patientRef, {
+            diseases: updatedDiseases,
+          });
+
+          resolve('');
+        } else {
+          reject('No diseases found with the provided ids');
         }
       } else {
         reject(`Patient with id ${patientId} not found`);

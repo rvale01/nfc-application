@@ -4,13 +4,13 @@ import { DiseasesTable, PatientPersonalDetailViews, PrescriptionsTable, Tabs } f
 import { useParams } from 'react-router-dom';
 import { RootState, useAppDispatch } from "../../../store";
 import { selectorPatientDetails } from "../../redux/selectors";
-import { addNewDisease, updateDisease } from "shared-functions";
-import { updatePatientDetails } from "../../redux/thunk";
+import { addNewDisease, addNewPrescription, deleteDisease, deletePrescription, updateDisease, updatePatientDetails, updatePrescription } from "../../redux/thunk";
 
 export const PatientDetails = () => {
     const { storage_id } = useParams();
     const patientDetails = useSelector((state: RootState) => selectorPatientDetails(state)(storage_id ?? ''))
     const dispatch = useAppDispatch()
+    
     return (
         <Tabs
                 items={[
@@ -25,14 +25,21 @@ export const PatientDetails = () => {
                         children: <DiseasesTable 
                             diseases={patientDetails?.diseases} 
                             disabled={false} 
-                            onNew={(disease)=>addNewDisease(disease, patientDetails?.storage_id!)}
-                            onEdit={(disease)=> updateDisease(disease, patientDetails?.storage_id!)}
+                            onNew={(disease)=>dispatch(addNewDisease({updatedDisease: disease, patientId: patientDetails?.storage_id!}))}
+                            onEdit={(disease)=> dispatch(updateDisease({updatedDisease: disease, patientId: patientDetails?.storage_id!}))}
+                            onDelete={(diseasesIds)=> dispatch(deleteDisease({diseasesIds, patientId: patientDetails?.storage_id!}))}
                         />
                     },
                     {
                         label: "Prescriptions",
                         key: 3,
-                        children: <PrescriptionsTable prescriptions={patientDetails?.prescriptions}/>
+                        children: <PrescriptionsTable 
+                            prescriptions={patientDetails?.prescriptions}
+                            disabled={false}
+                            onNew={(prescription)=>dispatch(addNewPrescription({newPrescription: prescription, patientId: patientDetails?.storage_id!}))}
+                            onEdit={(prescription)=> dispatch(updatePrescription({updatedPrescription: prescription, patientId: patientDetails?.storage_id!}))}
+                            onDelete={(prescriptionsIds)=> dispatch(deletePrescription({prescriptionsIds, patientId: patientDetails?.storage_id!}))}
+                        />
                     }
                 ]}
             />

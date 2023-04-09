@@ -21,8 +21,8 @@ export const EditModal = ({showModal, onCancel, onConfirm, disease}:EditModalI) 
                 onCancel={() => onCancel()} 
                 onConfirm={() => onConfirm({name: nameRef.current!.value, notes: notesRef.current!.value, id: disease.id})}
                 cancelText="Cancel"
-                confirmText="Add disease"
-                title="Add new disease"
+                confirmText="Update disease"
+                title="Update disease"
             >
                 <Box direction="column" gap="small">
                     <Box direction="column">

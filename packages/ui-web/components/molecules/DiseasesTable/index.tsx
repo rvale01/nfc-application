@@ -10,9 +10,10 @@ export interface DiseasesTableI{
     disabled?: boolean;
     onEdit?: (disease: DiseasesI) => void
     onNew?: (disease: DiseasesI) => void
+    onDelete?: (disease: string[]) => void
 }
 
-export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew}:DiseasesTableI) => {
+export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew, onDelete}:DiseasesTableI) => {
     const tableRef = useRef()
     const [showNewModal, setShowNewModal] = useState(false)
     const [selectedDisease, setSelectedDisease] = useState<null | DiseasesI>(null)
@@ -20,7 +21,7 @@ export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew}:DiseasesT
     return (
         <Box direction="column" gap="small">
             <Table
-                dataSource={diseases?.map((el, i)=> {return({...el, key: i})})}
+                dataSource={diseases?.map((el)=> {return({...el, key: el.id})})}
                 showCheckboxes={!disabled}  
                 ref={tableRef}
                 columns={[
@@ -44,19 +45,28 @@ export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew}:DiseasesT
 
             <NewModal
                 onCancel={()=> setShowNewModal(false)}
-                onConfirm={onNew!}
+                onConfirm={(disease: DiseasesI)=> {
+                    onNew && onNew(disease)
+                    setShowNewModal(false)
+                }}
                 showModal={showNewModal}
             />
 
             <EditModal
                 onCancel={()=> setSelectedDisease(null)}
-                onConfirm={onNew!}
+                onConfirm={(disease: DiseasesI)=> {
+                    onEdit && onEdit(disease)
+                    setSelectedDisease(null)
+                }}
                 showModal={selectedDisease !== null}
                 disease={selectedDisease || {} as DiseasesI}
             />
             
             <Box direction="row" gap="small">
-                <Button label="Delete diseases" type="danger" onClick={()=> setShowNewModal(true)}/>
+                <Button label="Delete diseases" type="danger" onClick={()=> {
+                    const selectedDiseasesIds = tableRef?.current.getSelectedRowKeys()
+                    onDelete && onDelete(selectedDiseasesIds)
+                }}/>
                 <Button label="Add new" type="primary" 
                     onClick={()=> setShowNewModal(true)}
                 />
