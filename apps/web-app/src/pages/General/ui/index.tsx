@@ -25,6 +25,7 @@ interface PropsI {
 export const General = () => {
     const [isAuth, setIsAuth] = useState<boolean | null>(null)
     useEffect(() => { 
+        if(localStorage.getItem("user_id")) return
         onAuthChange({setIsAuth: setIsAuth})
       }, []);
 

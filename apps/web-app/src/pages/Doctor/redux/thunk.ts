@@ -1,5 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { addPatientByCodeFunc, getDoctorDetails as getDetailsFunc, updateDocDetailsFunc, getPatientsList as getPatientsListFun, removePatientsFunc, updatePatientDetailsFunc, addNewDiseaseFunc, updateDiseaseFunc, deleteDiseaseFunc, deletePrescriptionFunc, updatePrescriptionFunc, addNewPrescriptionFunc } from 'shared-functions';
+import { 
+    addPatientByCodeFunc, 
+    getDoctorDetails as getDetailsFunc, 
+    updateDocDetailsFunc, 
+    getPatientsList as getPatientsListFun, 
+    removePatientsFunc, 
+    updatePatientDetailsFunc, 
+    addNewDiseaseFunc, 
+    updateDiseaseFunc, 
+    deleteDiseaseFunc,
+    deletePrescriptionFunc, 
+    updatePrescriptionFunc, 
+    addNewPrescriptionFunc,
+    createNewPatientFunc
+} from 'shared-functions';
 import { showNotification } from 'ui-web';
 
 export const getDoctorDetails = createAsyncThunk(
@@ -170,7 +184,6 @@ export const addNewPrescription = createAsyncThunk(
     "doctor/addNewPrescription",
     async (data: { newPrescription: PrescriptionI; patientId: string }, { dispatch }) => {
       const { patientId, newPrescription } = data;
-      console.log(patientId, newPrescription)
       showNotification({
         func: () => addNewPrescriptionFunc(newPrescription, patientId),
         messages: {
@@ -223,6 +236,21 @@ export const addNewPrescription = createAsyncThunk(
               return "Prescription deleted successfully!";
             },
           },
+        },
+      });
+    }
+  );
+
+  export const addNewPatient = createAsyncThunk(
+    "doctor/addNewPatient",
+    async (data: PatientDetailsI, { dispatch }) => {
+    
+      showNotification({
+        func: () => createNewPatientFunc(data),
+        messages: {
+          error: "Something went wrong! Try again later",
+          pending: "Loading",
+          success: "New Patient added!"
         },
       });
     }

@@ -1,5 +1,8 @@
-import { doc, query, getDocs, collection, where, arrayUnion, setDoc, getDoc, arrayRemove, updateDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, query, getDocs, collection, where, arrayUnion, setDoc, getDoc, arrayRemove, updateDoc, addDoc } from "firebase/firestore";
+import { createNewUser } from "../auth/newPatient";
 import { db } from "../firestore";
+import { v4 as uuidv4 } from 'uuid';
 
 export const addPatientByCodeFunc = async(userCode: string) => {
     // get the patient with the share code
@@ -47,3 +50,31 @@ export const removePatientsFunc = async(usersId: string[]) => {
         throw e
     }
 }
+
+export const createNewPatientFunc = async(patientDetails: PatientDetailsI) => {
+    try {
+      // Create a new user with email and password
+      const userCredential = await createNewUser(patientDetails.email);
+      const userId = userCredential.user.uid;
+
+      const shared_code = uuidv4();
+      let tempDetails = {
+        ...patientDetails, 
+        userId: userId,
+        shared_code
+      }
+      // Create a new patient document with the patient's details
+      const patientRef = await addDoc(collection(db, "patients"), tempDetails);
+      
+      const doctorId = localStorage.getItem("user_id") ?? ''
+
+        const relationRef = doc(db, "patient_doctor_relation", doctorId);
+        await setDoc(relationRef, {
+            patients: arrayUnion(userId)
+        }, { merge: true });
+        
+      return patientRef.id;
+    } catch (error) {
+      throw error;
+    }
+  }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Text } from 'ui-web'
+import { NewPatient } from './NewPatient'
 import { SwitchButtons } from './SwitchButtons'
 import { UseCode } from './UseCode'
 export type AddPatientPagesI = "switch" | "byCode" | "createPatient"
@@ -12,6 +13,7 @@ export const AddPatient = () => {
         switch(shownPage){
             case "switch": return <SwitchButtons onChange={setShownPage}/>
             case "byCode": return <UseCode/>
+            case "createPatient": return <NewPatient/>
         }
     }
 

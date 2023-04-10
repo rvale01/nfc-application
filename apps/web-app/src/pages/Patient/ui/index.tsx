@@ -37,6 +37,7 @@ export const Patient = () => {
     const handleChange = (path: string) => {
         if(path === "logout"){
             auth.signOut()
+            localStorage.clear()
         }else{
             navigate(`/patient/${path}`)
         }
