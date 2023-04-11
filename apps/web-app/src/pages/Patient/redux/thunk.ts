@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { addNewDiseaseFunc, addNewPrescriptionFunc, deleteDiseaseFunc, deletePrescriptionFunc, getPatientDetails as getDetailsFunc, updateDiseaseFunc, updatePatientDetailsFunc, updatePrescriptionFunc } from 'shared-functions';
+import { addNewDiseaseFunc, addNewPrescriptionFunc, deleteDiseaseFunc, deletePrescriptionFunc, getPatientDetailsFunc, updateDiseaseFunc, updatePatientDetailsFunc, updatePrescriptionFunc } from 'shared-functions';
 import { showNotification } from 'ui-web';
 
 export const getPatientDetails = createAsyncThunk(
     'details/getPatientDetails',
     async () => {
         const userId = localStorage.getItem('user_id') as string
-        return getDetailsFunc(userId)
+        return await getPatientDetailsFunc(userId)
     }
 )
 

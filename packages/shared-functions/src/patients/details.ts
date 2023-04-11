@@ -1,10 +1,10 @@
 import { db } from '../firestore';
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-export const getPatientDetails = async (userId: string)=> {
+export const getPatientDetailsFunc = async (userId: string)=> {
     const docRef = doc(db, "patients", userId);
     const datas = (await getDoc(docRef));
-    return datas.data()
+    return datas.data() as PatientDetailsI
 }
 
 export const updatePatientDetailsFunc = async(data: PatientDetailsI)=> {

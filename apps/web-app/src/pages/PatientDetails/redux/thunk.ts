@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getPatientDetails as getPatientDetailsFunc } from "shared-functions"
+import { getPatientDetailsFunc } from "shared-functions"
 
 export const getPatientDetails = createAsyncThunk(
     'details/getPatientDetails',
