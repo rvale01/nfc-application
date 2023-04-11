@@ -5,10 +5,11 @@ import { addPatientByCode } from "../../redux/thunk";
 
 export const UseCode = () => {
     const dispatch = useAppDispatch()
-    const codeRef = useRef()
+    const codeRef = useRef(null)
     return (
         <Box direction="row" gap="small" verticalAlign="center">
             <Input placeholder="Shared Code" ref={codeRef}/>
+            {/* @ts-ignore */}
             <Button label="Add" onClick={()=> dispatch(addPatientByCode(codeRef.current.value))}/>
         </Box>
     )

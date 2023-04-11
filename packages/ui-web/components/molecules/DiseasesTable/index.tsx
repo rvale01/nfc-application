@@ -64,6 +64,7 @@ export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew, onDelete}
             
             <Box direction="row" gap="small">
                 <Button label="Delete diseases" type="danger" onClick={()=> {
+                     // @ts-ignore
                     const selectedDiseasesIds = tableRef?.current.getSelectedRowKeys()
                     onDelete && onDelete(selectedDiseasesIds)
                 }}/>

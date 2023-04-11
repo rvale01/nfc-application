@@ -28,6 +28,7 @@ export const EditModal = ({showModal, onCancel, onConfirm, prescription}:EditMod
                   notes: notesRef.current!.value,
                   start: startRef.current!.value,
                   end: endRef.current!.value,
+                    // @ts-ignore
                   recurring: recurringRef.current!.getChecked(),
                   id: prescription.id,
                 })}

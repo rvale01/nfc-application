@@ -18,7 +18,8 @@ export const Patients = () => {
     }, [])
 
     const handleDeletePatients = () => {
-        const selectedPatients = tableRef?.current.getSelectedRowKeys() as PatientDetailsI[]
+         // @ts-ignore
+        const selectedPatients = tableRef?.current.getSelectedRowKeys()
         dispatch(removePatients(selectedPatients))
     }
 
