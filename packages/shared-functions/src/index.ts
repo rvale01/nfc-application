@@ -1,5 +1,7 @@
 export * from './firestore';
+
 export * from './patients/details'
+export * from './patients/doctors'
 
 export * from './doctors/details'
 export * from './doctors/patients'
