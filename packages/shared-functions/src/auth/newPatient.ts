@@ -11,7 +11,7 @@ function generateRandomPassword(length = 8) {
     return result;
   }
 
-export const createNewUser = async(email) => {
+export const createNewUser = async(email: string) => {
     const auth = getAuth();
     const password = generateRandomPassword();
   
