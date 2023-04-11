@@ -2,15 +2,11 @@ import React, { useEffect } from "react";
 import { Box, DiseasesTable, LoadingSpinner, PatientPersonalDetailViews, PrescriptionsTable, Tabs, Text } from "ui-web";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { selectorPatientDetailsRequest } from "../redux/selectors";
-import { updateDetails } from "../redux/thunk";
+import { addNewDisease, addNewPrescription, deleteDisease, deletePrescription, updateDetails, updateDisease, updatePrescription } from "../redux/thunk";
 
 export const PersonalDetails = () => {
     const { data: patientDetails, status} = useAppSelector(selectorPatientDetailsRequest)
     const dispatch = useAppDispatch()
-
-    const onChangeDetails = (data: PatientDetailsI) => {
-        dispatch(updateDetails(data))
-    }
 
     if(status === 'fulfilled'){
         return (
@@ -26,17 +22,29 @@ export const PersonalDetails = () => {
                         {
                             label: "Personal Details",
                             key: 1,
-                            children: <PatientPersonalDetailViews disabled={false} patient={patientDetails} onSave={onChangeDetails}/>
+                            children: <PatientPersonalDetailViews disabled={false} patient={patientDetails} onSave={(patient)=>dispatch(updateDetails(patient))}/>
                         },
                         {
                             label: "Diseases",
                             key: 2,
-                            children: <DiseasesTable diseases={patientDetails?.diseases}/>
+                            children: <DiseasesTable 
+                                diseases={patientDetails?.diseases} 
+                                disabled={false} 
+                                onNew={(disease)=>dispatch(addNewDisease({updatedDisease: disease, patientId: patientDetails?.storage_id!}))}
+                                onEdit={(disease)=> dispatch(updateDisease({updatedDisease: disease, patientId: patientDetails?.storage_id!}))}
+                                onDelete={(diseasesIds)=> dispatch(deleteDisease({diseasesIds, patientId: patientDetails?.storage_id!}))}
+                            />
                         },
                         {
                             label: "Prescriptions",
                             key: 3,
-                            children: <PrescriptionsTable prescriptions={patientDetails?.prescriptions}/>
+                            children: <PrescriptionsTable 
+                                prescriptions={patientDetails?.prescriptions}
+                                disabled={false}
+                                onNew={(prescription)=>dispatch(addNewPrescription({newPrescription: prescription, patientId: patientDetails?.storage_id!}))}
+                                onEdit={(prescription)=> dispatch(updatePrescription({updatedPrescription: prescription, patientId: patientDetails?.storage_id!}))}
+                                onDelete={(prescriptionsIds)=> dispatch(deletePrescription({prescriptionsIds, patientId: patientDetails?.storage_id!}))}
+                            />
                         }
                     ]}
                 />

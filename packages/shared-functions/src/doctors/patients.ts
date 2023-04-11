@@ -46,7 +46,6 @@ export const removePatientsFunc = async(usersId: string[]) => {
             patients: arrayRemove(...usersId)
         }, { merge: true });
     }catch(e){
-        console.log(e)
         throw e
     }
 }

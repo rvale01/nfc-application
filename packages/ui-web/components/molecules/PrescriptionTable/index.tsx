@@ -73,7 +73,6 @@ export const PrescriptionsTable = ({prescriptions, disabled=true, onEdit, onNew,
             <Box direction="row" gap="small">
                 <Button label="Delete prescription" type="danger" onClick={()=> {
                     const selectedPrescriptionsIds = tableRef?.current.getSelectedRowKeys()
-                    console.log(selectedPrescriptionsIds)
                     onDelete && onDelete(selectedPrescriptionsIds)
                 }}/>
                 <Button label="Add new" type="primary" 

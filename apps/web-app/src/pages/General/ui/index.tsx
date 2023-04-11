@@ -25,8 +25,9 @@ interface PropsI {
 export const General = () => {
     const [isAuth, setIsAuth] = useState<boolean | null>(null)
     useEffect(() => { 
-        if(localStorage.getItem("user_id")) return
-        onAuthChange({setIsAuth: setIsAuth})
+        if(localStorage.getItem("user_id") === null){
+            onAuthChange({setIsAuth: setIsAuth})
+        }
       }, []);
 
     const ProtectedRoute = ({ element }: PropsI) => {
@@ -59,7 +60,7 @@ export const General = () => {
         <Provider store={store}>
             <HashRouter>
                 <Routes>
-                    <Route path="/" element={<UnprotectedRoute element={<Home/>}/>} />
+                    <Route path="/" element={<Home/>} />
                     <Route path="/login" element={<UnprotectedRoute element={<Login/>}/>} />
                     <Route path="/register" element={<UnprotectedRoute element={<Register />} />}/>
 

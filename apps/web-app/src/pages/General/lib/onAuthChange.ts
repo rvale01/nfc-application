@@ -2,7 +2,8 @@ import { auth } from "../../../../firebase";
 
 export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void}) => {
     auth.onAuthStateChanged((firebaseUser) => {
-        if (firebaseUser) {
+      console.log(firebaseUser)
+        if (firebaseUser && localStorage.getItem("user_id") === null) {
           firebaseUser.getIdTokenResult().then((idTokenResult) => {
             const token = idTokenResult.token;
             const expirationDate = new Date(idTokenResult.expirationTime);
@@ -18,9 +19,9 @@ export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void
           setIsAuth(false)
           localStorage.removeItem('access_token');
           localStorage.removeItem('access_token_expiration');
-          if(!window.location.hash.includes("#/patient-details/")){
-            window.location.href = '/#/login'
-          }
+          // if(!window.location.hash.includes("#/patient-details/")){
+          //   window.location.href = '/#/login'
+          // }
         }
       });
 }

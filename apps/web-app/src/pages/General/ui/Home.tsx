@@ -54,6 +54,7 @@ const View3 = () => {
 export const Home = () => {
     const [isLogged, setIsLogged] = useState<null | boolean>(null)
     auth.onAuthStateChanged(user => {
+        console.log(user, isLogged, 'this is important')
         if (user) {
             //TODO: dispatch get details -> details are then saved in slice auth
             setIsLogged(true);
@@ -66,7 +67,8 @@ export const Home = () => {
     if (isLogged) {
         //TODO: if logged -> redirect to either /doctor or /patient
         return <div>logged</div>
-    } else if(isLogged === null){
+    } 
+    else if(isLogged === null){
         return <LoadingSpinner color="primary"/>
     }
     else {

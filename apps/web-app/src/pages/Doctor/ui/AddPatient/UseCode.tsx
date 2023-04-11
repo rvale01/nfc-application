@@ -8,7 +8,7 @@ export const UseCode = () => {
     const codeRef = useRef()
     return (
         <Box direction="row" gap="small" verticalAlign="center">
-            <Input placeholder="Shared Code" ref={codeRef} onBlur={()=>console.log("")}/>
+            <Input placeholder="Shared Code" ref={codeRef}/>
             <Button label="Add" onClick={()=> dispatch(addPatientByCode(codeRef.current.value))}/>
         </Box>
     )
