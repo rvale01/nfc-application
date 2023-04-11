@@ -1,15 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getPatientDetails } from './thunk'
+import { getPatientDetails, getDoctorsList } from './thunk'
 
 export interface InitialStateI {
     patientDetailsRequest: {
         data: PatientDetailsI,
         status: StatusI
     }
+    doctorsListRequest: {
+        data: BriefDoctorDetailsI[],
+        status: StatusI
+    }
 }
   
 const initialState: InitialStateI = {
-    patientDetailsRequest: {} as InitialStateI['patientDetailsRequest']
+    patientDetailsRequest: {} as InitialStateI['patientDetailsRequest'],
+    doctorsListRequest: {} as InitialStateI['doctorsListRequest']
 }
   
 export const patientSlice = createSlice({
@@ -27,6 +32,18 @@ export const patientSlice = createSlice({
             })
             .addCase(getPatientDetails.rejected, (state, action)=> {
                 state.patientDetailsRequest.status = 'rejected'
+            });
+        
+        builder
+            .addCase(getDoctorsList.fulfilled, (state, action)=> {
+                state.doctorsListRequest.status = 'fulfilled'
+                state.doctorsListRequest.data = action.payload
+            })
+            .addCase(getDoctorsList.pending, (state)=> {
+                state.doctorsListRequest.status = 'pending'
+            })
+            .addCase(getDoctorsList.rejected, (state, action)=> {
+                state.doctorsListRequest.status = 'rejected'
             })
     }
 })

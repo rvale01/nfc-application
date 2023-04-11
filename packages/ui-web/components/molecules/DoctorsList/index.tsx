@@ -2,8 +2,7 @@ import React from "react";
 import { Table } from "../../atoms/Table";
 
 export interface DoctorsListI{
-    doctorsDetails?: any[]
-    //BriefDoctorDetailsI[]
+    doctorsDetails?: BriefDoctorDetailsI[]
 }
 export const DoctorsList = ({doctorsDetails}:DoctorsListI) => {
     return (
@@ -13,7 +12,10 @@ export const DoctorsList = ({doctorsDetails}:DoctorsListI) => {
             columns={[
                 {
                     title: 'Full Name',
-                    dataIndex: 'full_name',
+                    dataIndex: '',
+                    render: (data) => (
+                        `${data.name} ${data.surname}`
+                      ),
                 },
                 {
                     title: 'Email',

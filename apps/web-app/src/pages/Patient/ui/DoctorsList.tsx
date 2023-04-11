@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, DoctorsList, LoadingSpinner, Text } from "ui-web"
-import { useAppSelector } from "../../store";
-import { selectorPatientDetailsRequest } from "../redux/selectors";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { selectorDoctorsListRequest } from "../redux/selectors";
 
 
 export const DoctorsDetailsList = () => {
-    const { data: patientDetails, status} = useAppSelector(selectorPatientDetailsRequest)
-    
+    const { data: doctorsList, status} = useAppSelector(selectorDoctorsListRequest)
+    const dispqtch = useAppDispatch()
+
+    useEffect(()=> {
+
+    }, [])
+
     if(status === 'fulfilled'){
         return(
             <Box gap="medium" direction="column">
@@ -16,10 +21,9 @@ export const DoctorsDetailsList = () => {
                     size="large"
                     color="black"
                 />
-                {/* TODO: fix this */}
-                {/* <DoctorsList
-                    doctorsDetails={patientDetails.doctors_allowed}
-                /> */}
+                <DoctorsList
+                    doctorsDetails={doctorsList}
+                />
             </Box>
         )
     }else if(status === "pending"){
