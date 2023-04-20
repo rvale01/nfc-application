@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { Stack } from '../../'
-import { Login } from '../ui/Auth/Login';
-import { Registration } from '../ui/Auth/Registration';
+import { Stack } from '../..'
+import { Login } from './Auth/Login';
+import { Registration } from './Auth/Registration';
 import { Introduction } from './Introduction';
 
 export const IntroNavStack = () => {
