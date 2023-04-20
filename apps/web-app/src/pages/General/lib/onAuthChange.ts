@@ -1,4 +1,4 @@
-import { auth } from "../../../../firebase";
+import { auth } from "shared-functions";
 
 export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void}) => {
     auth.onAuthStateChanged((firebaseUser) => {

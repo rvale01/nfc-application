@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { auth } from "../../../../firebase";
+import { auth } from "shared-functions";
 import { useAppDispatch } from "../../store";
 import { getDoctorDetails } from "../redux/thunk";
 import { Settings } from "./Settings";

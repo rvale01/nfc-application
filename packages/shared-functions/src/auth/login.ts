@@ -10,3 +10,13 @@ export const loginFunc = async({email, password}: LoginUserI) => {
             })
     })
 }
+
+export const logout = () => {
+    return new Promise(async (resolve, reject) => {
+        auth.signOut()
+            .then( () => resolve(""))
+            .catch(err=> {
+                reject(err)
+            })
+    })
+}

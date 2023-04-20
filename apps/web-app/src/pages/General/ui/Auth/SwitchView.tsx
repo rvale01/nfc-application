@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore"; 
-import { db } from '../../../../../firebase';
+import { db } from 'shared-functions';
 import React, { useEffect } from "react";
 import { LoadingSpinner } from "ui-web";
 
