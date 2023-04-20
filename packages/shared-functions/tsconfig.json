@@ -1,8 +1,11 @@
 {
   "extends": "tsconfig/react-library.json",
+  "include": [".", "../types"],
+  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
-    "lib": ["dom"]
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["../types"],
-  "references": [{ "path": "./tsconfig.node.json" }]
 }

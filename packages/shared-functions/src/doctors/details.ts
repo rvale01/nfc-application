@@ -7,11 +7,10 @@ export const getDoctorDetails = async (userId: string) => {
     return data.data() as DoctorDetailsI
 }
 
-export const updateDocDetailsFunc = (data: DoctorDetailsI) => {
+export const updateDocDetailsFunc = (data: DoctorDetailsI, userId: string) => {
     return new Promise(async (resolve, reject) => {
-        const usersId = localStorage.getItem('user_id') as string
         await setDoc(
-            doc(db, "doctors", usersId),data) 
+            doc(db, "doctors", userId),data) 
                 .then( () => resolve(""))
                 .catch(err=> {
                     reject(err)

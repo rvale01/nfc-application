@@ -27,9 +27,10 @@ export const getDoctorDetails = createAsyncThunk(
 export const updateDocDetails = createAsyncThunk(
     'doctor/updateDocDetails',
     async (data: DoctorDetailsI) => {
+        const usersId = localStorage.getItem('user_id') as string
         showNotification(
             {
-                func: () =>  updateDocDetailsFunc(data),
+                func: () =>  updateDocDetailsFunc(data, usersId),
                 messages: {
                     error: "Something went Wrong! Try again later",
                     pending: 'Loading',
@@ -46,9 +47,10 @@ export const updateDocDetails = createAsyncThunk(
 export const addPatientByCode =  createAsyncThunk(
     'doctor/addPatientByCode',
     async (code: string) => {
+        const doctorId = localStorage.getItem("user_id") ?? ''
         showNotification(
             {
-                func: () =>  addPatientByCodeFunc(code),
+                func: () =>  addPatientByCodeFunc(code, doctorId),
                 messages: {
                     error: "Something went Wrong! Try again later",
                     pending: 'Loading',
@@ -78,9 +80,10 @@ export const getPatientsList = createAsyncThunk(
 export const removePatients = createAsyncThunk(
     'doctor/removePatients',
     async (usersId: string[], {dispatch}) => {
+        const doctorId = localStorage.getItem("user_id") ?? ''
         showNotification(
             {
-                func: () =>  removePatientsFunc(usersId),
+                func: () =>  removePatientsFunc(usersId, doctorId),
                 messages: {
                     error: "Something went Wrong! Try again later",
                     pending: 'Loading',
@@ -244,9 +247,9 @@ export const addNewPrescription = createAsyncThunk(
   export const addNewPatient = createAsyncThunk(
     "doctor/addNewPatient",
     async (data: PatientDetailsI, { dispatch }) => {
-    
+        const doctorId = localStorage.getItem("user_id") ?? ''
       showNotification({
-        func: () => createNewPatientFunc(data),
+        func: () => createNewPatientFunc(data, doctorId),
         messages: {
           error: "Something went wrong! Try again later",
           pending: "Loading",

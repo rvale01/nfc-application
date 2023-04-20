@@ -4,12 +4,11 @@ import { createNewUser } from "../auth/newPatient";
 import { db } from "../firestore";
 import { v4 as uuidv4 } from 'uuid';
 
-export const addPatientByCodeFunc = async(userCode: string) => {
+export const addPatientByCodeFunc = async(userCode: string, doctorId: string) => {
     // get the patient with the share code
     const q = query(collection(db, "patients"), where("shared_code", "==", userCode));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async(patientDoc) => {
-        const doctorId = localStorage.getItem("user_id") ?? ''
         const patientId = patientDoc.id
 
         const relationRef = doc(db, "patient_doctor_relation", doctorId);
@@ -37,9 +36,8 @@ export const getPatientsList = async(doctorId: string) => {
     }
 }
 
-export const removePatientsFunc = async(usersId: string[]) => {
+export const removePatientsFunc = async(usersId: string[], doctorId: string) => {
     try {
-        const doctorId = localStorage.getItem("user_id") ?? ''
         const queryRef = doc(db, "patient_doctor_relation", doctorId);
         
         await setDoc(queryRef, {
@@ -50,7 +48,7 @@ export const removePatientsFunc = async(usersId: string[]) => {
     }
 }
 
-export const createNewPatientFunc = async(patientDetails: PatientDetailsI) => {
+export const createNewPatientFunc = async(patientDetails: PatientDetailsI, doctorId: string) => {
     try {
       // Create a new user with email and password
       const userCredential = await createNewUser(patientDetails.email);
@@ -64,8 +62,6 @@ export const createNewPatientFunc = async(patientDetails: PatientDetailsI) => {
       }
       // Create a new patient document with the patient's details
       const patientRef = await addDoc(collection(db, "patients"), tempDetails);
-      
-      const doctorId = localStorage.getItem("user_id") ?? ''
 
         const relationRef = doc(db, "patient_doctor_relation", doctorId);
         await setDoc(relationRef, {

@@ -1,18 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { Box, Button, Input, Page } from 'ui-native';
-import { loginFunc } from 'shared-functions';
+import { useAppDispatch } from '../../../store';
+import { login } from '../../redux/thunk';
 
 export const Login = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const [loading, setIsLoading] = useState(false)
-
+    const dispatch = useAppDispatch()
+    
     const onLogin = async() => {
         setIsLoading(true)
-        await loginFunc({
+        dispatch(login({
               email: emailRef.current.value,
               password: passwordRef.current.value,
-            })
+            }))
         setIsLoading(false)
     }
 

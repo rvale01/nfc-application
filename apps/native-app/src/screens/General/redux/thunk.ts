@@ -1,34 +1,34 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { showNotification } from 'ui-web';
 import { authErrors, loginFunc, registerFunc } from 'shared-functions';
+import { Alert } from 'react-native';
 
 
 export const login = createAsyncThunk(
     'auth/login',
     async ({email, password}: LoginUserI) => {
-        showNotification(
-            {
-                func: () => loginFunc({email, password}), 
-                messages: {
-                    error: {
-                        render({data}){
-                            // @ts-ignore
-                            if (data.code in authErrors){
-                                // @ts-ignore
-                                return authErrors[data.code as keyof typeof errors]
-                            }
-                            return authErrors.default
-                          }                  
-                    },
-                    pending: 'Loading...',
-                    success: "Welcome!"
+        await loginFunc({email, password})
+            .then((userCredential) => {
+                return userCredential.user;
+            })
+            .catch((data)=>{
+                let error = authErrors.default
+                if (data.code in authErrors){
+                    // @ts-ignore
+                    error = authErrors[data.code as keyof typeof errors]
                 }
-            }
-        )
-        .then((userCredential) => {
-            return userCredential.user;
-        })
-        
+                Alert.alert(
+                    'Error',
+                    error,
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => console.log('OK Pressed'),
+                      },
+                    ],
+                    { cancelable: false }
+                  );
+            })        
     }
   )
 
@@ -36,27 +36,27 @@ export const login = createAsyncThunk(
 export const register = createAsyncThunk(
     'auth/register',
     async (userData: RegisterI) => {
-        showNotification(
-            {
-                func:() => registerFunc(userData),
-                messages: {
-                    error: {
-                        render({data}){
-                             // @ts-ignore
-                            if (data.code in authErrors){
-                                // @ts-ignore
-                                return authErrors[data.code as keyof typeof errors]
-                            }
-                            return authErrors.default
-                          }                  
-                    },
-                    pending: 'loading',
-                    success: "Welcome!"
+        await registerFunc(userData)
+            .then((userCredential) => {
+                return userCredential.user;
+            })
+            .catch((data)=>{
+                let error = authErrors.default
+                if (data.code in authErrors){
+                    // @ts-ignore
+                    error = authErrors[data.code as keyof typeof errors]
                 }
-            }
-        )
-        .then((userCredential) => {
-            return userCredential.user;
-        })
+                Alert.alert(
+                    'Error',
+                    error,
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => console.log('OK Pressed'),
+                      },
+                    ],
+                    { cancelable: false }
+                  );
+            })  
     }
   )

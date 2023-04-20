@@ -1,5 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
+  "include": [".", "../types"],
+  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "strict": true
   }

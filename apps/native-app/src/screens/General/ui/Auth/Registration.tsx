@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Box, Button, Input, Page, Text, Toggle } from 'ui-native'
 import { registerFunc } from 'shared-functions';
+import { useAppDispatch } from '../../../store';
+import { register } from '../../redux/thunk';
 
 export const Registration = () => {
     const emailRef = useRef(null)
@@ -10,16 +12,17 @@ export const Registration = () => {
     const surnameRef = useRef(null)
     const [isDoctor, setIsDoctor] = useState(false);
     const [loading, setIsLoading] = useState(false)
+    const dispatch = useAppDispatch()
 
     const onRegister = async() => {
         setIsLoading(true)
-        await registerFunc({
+        dispatch(register({
             email: emailRef.current.value,
             password: passwordRef.current.value,
             doctorCode: doctorCodeRef.current.value,
             name: nameRef.current.value,
             surname: surnameRef.current.value
-        })
+        }))
         setIsLoading(false)
     }
 
