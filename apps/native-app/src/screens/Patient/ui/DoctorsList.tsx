@@ -1,25 +1,28 @@
 // DoctorsDetailsList.js
 import React, { useEffect } from 'react';
-import { DoctorsList } from 'ui-native';
-import LoadingSpinner from './components/LoadingSpinner';
+import { DoctorsList, Loader, Text } from 'ui-native';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { selectorDoctorsListRequest } from '../redux/selectors';
+import { Box } from 'ui-web';
+import { getPatientDetails } from '../redux/thunk';
 
 export const DoctorsDetailsList = () => {
   const { data: doctorsList, status } = useAppSelector(selectorDoctorsListRequest);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getPatientDetails())
+  }, []);
 
   if (status === 'fulfilled') {
     return (
-      <View>
-        <Text style={{ fontWeight: 'bold', fontSize: 24, color: 'black' }}>My Doctors</Text>
+      <Box direction='column' gap='medium'>
+        <Text text='My Doctors' fontWeight='bold' size='title'/>
         <DoctorsList doctorsDetails={doctorsList} />
-      </View>
+      </Box>
     );
   } else if (status === 'pending') {
-    return <LoadingSpinner color="primary" />;
+    return <Loader />;
   }
 
   return null;

@@ -4,7 +4,7 @@ import { container as containerStyle, text as textStyle, input as inputStyle} fr
 
 interface InputI {
     /** Determines which keyboard to open */
-    keyboardType?: 'email-address' | 'visible-password' | 'default',
+    keyboardType?: 'email-address' | 'visible-password' | 'default' | 'phone-pad',
     /** Determines how the return key should look. */
     returnKeyType?: 'next' | 'done' | 'send' | 'go' | 'search',
     /** ios only Used for autofill */

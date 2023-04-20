@@ -5,6 +5,7 @@ export { Input } from './src/components/atoms/Input'
 export { Page } from './src/components/atoms/Page'
 export { Text } from './src/components/atoms/Text'
 export { Toggle } from './src/components/atoms/Toggle'
+export { Loader } from './src/components/atoms/Loader'
 
 export { Carousel } from './src/components/molecules/Carousel'
 export { DoctorsList } from './src/components/molecules/DoctorsList'
