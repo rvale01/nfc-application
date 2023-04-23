@@ -43,8 +43,6 @@ export const Patient = () => {
         }
     }
 
-    console.log("Hellooooo?")
-
     return(
         <DashboardLayout
             activeItem={1}
