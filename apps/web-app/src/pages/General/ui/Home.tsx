@@ -8,8 +8,6 @@ import { ReactComponent as WomanImg }  from '../../../assets/womanImg.svg'
 // @ts-ignore
 import { ReactComponent as ManExplainingImg }  from '../../../assets/manExplainingImg.svg'
 
-
-// TODO: create components for this in uikit
 const View1 = () => {
     return (
         <Box direction="row" width={"100%"}>
