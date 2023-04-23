@@ -58,7 +58,8 @@ export const General = () => {
         
     return(
         <Provider store={store}>
-            <HashRouter>
+            <div>okok</div>
+            {/* <HashRouter>
                 <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/login" element={<UnprotectedRoute element={<Login/>}/>} />
@@ -78,7 +79,7 @@ export const General = () => {
                         element={<PatientDetails />}
                     />
                 </Routes>
-            </HashRouter>
+            </HashRouter> */}
         </Provider>
     )
 }
