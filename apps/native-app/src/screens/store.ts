@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 
 // import patientDetailsReducer from './PatientDetails/redux/slice'
-// import patientReducer from './Patient/redux/slice'
+import patientReducer from './Patient/redux/slice'
 // import doctorReducer from './Doctor/redux/slice'
 
 export const store = configureStore({
     reducer: {
       // patientDetails: patientDetailsReducer,
-      // patient: patientReducer,
+      patient: patientReducer,
       // doctor: doctorReducer
     },
   })

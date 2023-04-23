@@ -39,5 +39,3 @@ export const Input = forwardRef(({label, defaultValue, keyboardType, returnKeyTy
         </View>
     )
 })
-
-Input.displayName = "Input"
