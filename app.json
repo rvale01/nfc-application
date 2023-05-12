@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "monorepo-app-project",
+    "slug": "monorepo-app-project",
+    "version": "0.0.0",
+    "sdkVersion": "47.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.rvale.monorepo-app-project"
+    }
+  }
+}

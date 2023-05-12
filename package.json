@@ -10,16 +10,26 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --continue",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
     "prettier": "*",
-    "turbo": "*"
+    "turbo": "*",
+    "@babel/core": "^7.12.9"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "expo": "~47.0.14",
+    "expo-splash-screen": "~0.17.5",
+    "expo-status-bar": "~1.4.2",
+    "react": "18.1.0",
+    "react-native": "0.70.8"
+  },
   "packageManager": "yarn@1.22.10"
 }

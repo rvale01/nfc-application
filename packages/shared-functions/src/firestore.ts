@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 
-// TODO: add it in the .env file
 const firebaseConfig = {
     apiKey: "AIzaSyBB89bl8iB6IR6nSFCbl9fZt6ZPEmcDiz4",
     authDomain: "nfcproject-35a25.firebaseapp.com",
