@@ -86,4 +86,3 @@ buck-out/
 
 web-build/
 dist/
-packages/ui-native
