@@ -2,7 +2,6 @@ import { auth } from "shared-functions";
 
 export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void}) => {
     auth.onAuthStateChanged((firebaseUser) => {
-      console.log(firebaseUser)
         if (firebaseUser && localStorage.getItem("user_id") === null) {
           firebaseUser.getIdTokenResult().then((idTokenResult) => {
             const token = idTokenResult.token;

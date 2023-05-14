@@ -9,3 +9,8 @@ export { Loader } from './src/components/atoms/Loader'
 
 export { Carousel } from './src/components/molecules/Carousel'
 export { DoctorsList } from './src/components/molecules/DoctorsList'
+export { PatientList } from './src/components/molecules/PatientsList'
+export { DoctorPersonalDetailViews } from './src/components/molecules/DoctorPersonalDetails'
+export { PatientPersonalDetailViews } from './src/components/molecules/PatientPersonalDetails'
+export { PrescriptionDetails } from './src/components/molecules/PrescriptionDetails'
+export { DiseasesList } from './src/components/molecules/DiseasesDetails'

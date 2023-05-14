@@ -1,6 +1,6 @@
 import React, { forwardRef, LegacyRef, useState } from 'react'
 import { TextInput, View, Text } from 'react-native'
-import { container as containerStyle, text as textStyle, input as inputStyle} from './style'
+import { text as textStyle, input as inputStyle} from './style'
 
 interface InputI {
     /** Determines which keyboard to open */
@@ -13,17 +13,23 @@ interface InputI {
     // onBlur: () => void,
     defaultValue?: string,
     onKeyPress?: () => void
+    onChangeText?: (value: any) => void;
+    name: string;
+    secureTextEntry?: boolean;
+    value: any
 }
 
-export const Input = forwardRef(({label, defaultValue, keyboardType, returnKeyType, textContentType, onKeyPress}: InputI, ref) => {
+export const Input = forwardRef(({value, secureTextEntry, onChangeText, name, label, defaultValue, keyboardType, returnKeyType, textContentType, onKeyPress}: InputI, ref) => {
     const [isFocused, setIsFocused] = useState(false)
 
+
     return (
-        <View style={containerStyle().base}>
-            <Text style={[textStyle().base,isFocused ? textStyle().onFocus : null ]}>
+        <View>
+            <Text style={[textStyle().base]}>
                 {label}
             </Text>
             <TextInput
+                placeholder={label}
                 ref={ref as LegacyRef<TextInput>}
                 style={inputStyle().base}
                 defaultValue={defaultValue}
@@ -35,6 +41,9 @@ export const Input = forwardRef(({label, defaultValue, keyboardType, returnKeyTy
                 textContentType={textContentType}
                 onFocus={()=> setIsFocused(true)}
                 onKeyPress={onKeyPress}
+                secureTextEntry={secureTextEntry}
+                value={value}
+                onChangeText={onChangeText}
             />
         </View>
     )

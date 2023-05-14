@@ -52,7 +52,6 @@ export const Home = () => {
     const [isLogged, setIsLogged] = useState<null | boolean>(null)
     auth.onAuthStateChanged(user => {
         if (user) {
-            //TODO: dispatch get details -> details are then saved in slice auth
             setIsLogged(true);
         }
         else {

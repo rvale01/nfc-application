@@ -7,7 +7,7 @@ export interface LoadingSpinnerI {
     color: keyof typeof colors;
 }
 
-export const LoadingSpinner = ({ color }: LoadingSpinnerI) => {
+export const Loading = ({ color }: LoadingSpinnerI) => {
     return (
         <Box direction="column" height="100%" width="100%" horizontalAlign='center' verticalAlign='center'>
             <LoadingSpinnerContainer color={color} />

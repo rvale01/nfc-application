@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '../../atoms/Button';
 import { Box } from '../../atoms/Box';
 import { Input } from '../../atoms/Input';
@@ -14,44 +14,50 @@ export const PatientPrescriptionForm: React.FC<PatientPrescriptionFormProps> = (
   prescription,
   onSave,
 }) => {
-  const nameRef = useRef(null);
-  const notesRef = useRef(null);
-  const startRef = useRef(null);
-  const endRef = useRef(null);
-  const recurringRef = useRef(null);
+  const [name, setName] = useState(prescription?.name);
+  const [notes, setNotes] = useState(prescription?.notes);
+  const [start, setStart] = useState(prescription?.start);
+  const [end, setEnd] = useState(prescription?.end);
+  const [recurring, setRecurring] = useState(prescription?.recurring || false);
+
 
   return (
     <Box direction='column' gap='medium'>
       <Input
         label="Name"
         keyboardType="default"
-        defaultValue={prescription?.name}
-        ref={nameRef}
+        value={name}
+        onChangeText={setName}
+        name='name'
       />
       <Input
         label="Notes"
         keyboardType="default"
-        defaultValue={prescription?.notes}
-        ref={notesRef}
+        value={notes}
+        onChangeText={setNotes}
+        name='notes'
       />
       <Input
         label="Start"
         keyboardType="default"
-        defaultValue={prescription?.start}
-        ref={startRef}
+        value={start}
+        onChangeText={setStart}
+        name='start'
       />
       <Input
         label="End"
         keyboardType="default"
-        defaultValue={prescription?.end}
-        ref={endRef}
+        value={end}
+        onChangeText={setEnd}
+        name='end'
       />
 
         <Box direction="row" verticalAlign="center" horizontalAlign="space-between">
             <Text text='Recurring'/>
         <Toggle
-          defaultChecked={prescription?.recurring || false}
-          ref={recurringRef}
+          checked={recurring}
+          onChange={setRecurring}
+          defaultChecked={false}
         />
       </Box>
       <Button
@@ -59,18 +65,14 @@ export const PatientPrescriptionForm: React.FC<PatientPrescriptionFormProps> = (
         onPress={() =>
           onSave({
               id: prescription?.id || '',
-              // @ts-ignore
-              name: nameRef.current.value,
-              // @ts-ignore
-              notes: notesRef.current.value,
-              // @ts-ignore
-              start: startRef.current.value,
-              // @ts-ignore
-              end: endRef.current.value,
-              recurring: false
+              name: name ?? '',
+              notes: notes ?? '',
+              start: start ?? '',
+              end: end ?? '',
+              recurring: recurring
           })
         }
       />
-    </View>
+    </Box>
   );
 };

@@ -70,16 +70,18 @@ export const PrescriptionsTable = ({prescriptions, disabled=true, onEdit, onNew,
                 prescription={selectedPrescription || {} as PrescriptionI}
             />
             
-            <Box direction="row" gap="small">
-                <Button label="Delete prescription" type="danger" onClick={()=> {
-                    // @ts-ignore
-                    const selectedPrescriptionsIds = tableRef?.current.getSelectedRowKeys()
-                    onDelete && onDelete(selectedPrescriptionsIds)
-                }}/>
-                <Button label="Add new" type="primary" 
-                    onClick={()=> setShowNewModal(true)}
-                />
-            </Box>
+            {!disabled ?
+                <Box direction="row" gap="small">
+                    <Button label="Delete prescription" type="danger" onClick={()=> {
+                        // @ts-ignore
+                        const selectedPrescriptionsIds = tableRef?.current.getSelectedRowKeys()
+                        onDelete && onDelete(selectedPrescriptionsIds)
+                    }}/>
+                    <Button label="Add new" type="primary" 
+                        onClick={()=> setShowNewModal(true)}
+                    />
+                </Box>
+            : null}
         </Box>
     )
 }

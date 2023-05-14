@@ -3,7 +3,7 @@ import { Switch } from 'react-native-paper';
 
 export interface ToggleI {
   defaultChecked: boolean;
-  checked?: boolean;
+  checked: boolean;
   onChange?: (isChecked: boolean) => void;
 }
 

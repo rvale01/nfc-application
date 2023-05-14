@@ -62,6 +62,7 @@ export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew, onDelete}
                 disease={selectedDisease || {} as DiseasesI}
             />
             
+            {!disabled ?
             <Box direction="row" gap="small">
                 <Button label="Delete diseases" type="danger" onClick={()=> {
                      // @ts-ignore
@@ -72,6 +73,7 @@ export const DiseasesTable = ({diseases, disabled=true, onEdit, onNew, onDelete}
                     onClick={()=> setShowNewModal(true)}
                 />
             </Box>
+            : null}
         </Box>
     )
 }
