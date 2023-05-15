@@ -1674,7 +1674,7 @@
     node-forge "^1.2.1"
     nullthrows "^1.1.1"
 
-"@expo/config-plugins@6.0.1", "@expo/config-plugins@~6.0.0":
+"@expo/config-plugins@6.0.1", "@expo/config-plugins@^6.0.1", "@expo/config-plugins@~6.0.0":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-6.0.1.tgz#827cb34c51f725d8825b0768df6550c1cf81d457"
   integrity sha512-6mqZutxeibXFeqFfoZApFUEH2n1RxGXYMHCdJrDj4eXDBBFZ3aJ0XBoroZcHHHvfRieEsf54vNyJoWp7JZGj8g==
@@ -15060,6 +15060,13 @@ react-native-modal-selector@^2.1.1:
   integrity sha512-+Cvoz/yNUFmfIkJ7xkmlLR2nhJOUhx00S6BPqp2Ruy8LkmaiNr7WMZ4BzsgzylyEgZ84Q+42HQ0v0QzJYobviA==
   dependencies:
     prop-types "^15.5.10"
+
+react-native-nfc-manager@^3.14.3:
+  version "3.14.3"
+  resolved "https://registry.yarnpkg.com/react-native-nfc-manager/-/react-native-nfc-manager-3.14.3.tgz#fe59d66ca7772c5a0f8ed304801b2e62afeea893"
+  integrity sha512-Ro0IxDSWaB4y/Bf5Do2H2cNzyrplusoDe91m74c56Y474VtT0Wr6iN71/ALho4+oPCt6mSYVWHofVjaZTwIt2w==
+  dependencies:
+    "@expo/config-plugins" "^6.0.1"
 
 react-native-paper@^5.7.0:
   version "5.7.2"

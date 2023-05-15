@@ -18,6 +18,17 @@ export const addPatientByCodeFunc = async(userCode: string, doctorId: string) =>
     });
 }
 
+export const addPatientByIdFunc = async(patientId: string, doctorId: string) => {
+    const patientDoc = await getDoc(doc(db, "patients", patientId));
+    
+    if (patientDoc.exists()) {
+        return patientDoc.data()
+    } else {
+        console.log("No such document!");
+    }
+    
+}
+
 export const getPatientsList = async(doctorId: string) => {
     const patientsRef = doc(db, "patient_doctor_relation", doctorId);
     const patientsId = (await getDoc(patientsRef)).data()?.patients
