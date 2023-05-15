@@ -7,7 +7,7 @@ export interface Input {
     disabled?: boolean;
     onBlur?: ({value, name}: {value: string, name: string}) => void;
     name?: string;
-    type?: 'text' | 'email' | 'password' | "date" //TODO: add others
+    type?: 'text' | 'email' | 'password' | "date"
 }
 
 export const Input = forwardRef(({ defaultValue, name, type, placeholder, onBlur, disabled = false}:Input, ref) => {

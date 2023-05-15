@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box } from './Box';
-import { Text } from './Text';
+import { Box } from '../Box';
+import { Text } from '../Text';
 
 interface LayoutProps {
   title: string;
@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export const Layout = ({ title, children }: LayoutProps) => {
   return (
-    <Box gap="medium">
+    <Box gap="medium" direction='row'>
       <Text text={title} fontWeight="bold" size="large" color="black" />
       {children}
     </Box>
