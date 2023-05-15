@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Button> = (args) => {
             {Object.entries(colors).map((el)=> {
                 return(
                     <>
-                        <div style={{color: el[1]}}/>
+                        <div style={{backgroundColor: el[1], height: '20px', width: '20px'}}/>
                         <Text text={el[0]}/>
                     </>
                 )

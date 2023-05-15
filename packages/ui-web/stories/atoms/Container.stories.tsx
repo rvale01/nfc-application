@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Container> = (args) => {
     return (
-        <Container showShadow borderRadius='standard' background='primary'>
+        <Container {...args} showShadow borderRadius='standard' background='primary'>
             <Text text='Example' color='white'/>
         </Container>
     )

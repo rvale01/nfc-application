@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Box> = (args) => {
     return (
-        <Box direction='column' gap='large'>
+        <Box {...args} direction='column' gap='large' >
              <div style={{backgroundColor: 'red', height: '150px', width: '100px'}}/>
             <div style={{backgroundColor: 'yellow', height: '150px', width: '100px'}}/>
         </Box>
