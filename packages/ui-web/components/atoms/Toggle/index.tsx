@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle, Ref } from "react";
 import { Switch } from "antd";
 
-interface ToggleI {
+export interface ToggleI {
   defaultChecked: boolean;
   unCheckedText?: string;
   checkedText?: string;

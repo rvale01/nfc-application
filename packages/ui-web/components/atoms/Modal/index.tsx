@@ -1,7 +1,7 @@
 import { Modal as AntModal } from 'antd';
 import { ReactNode } from 'react';
 
-interface ModalProps {
+export interface ModalProps {
   children: ReactNode;
   isShowing: boolean;
   title?: string;

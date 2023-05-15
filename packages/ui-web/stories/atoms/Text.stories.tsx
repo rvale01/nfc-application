@@ -15,3 +15,20 @@ Primary.args = {
   fontWeight: 'bold',
   text: 'Primary text'
 };
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  color: 'black',
+  fontWeight: 'normal',
+  text: 'Another example of text',
+  textAlign: 'center'
+};
+
+export const Title = Template.bind({});
+Title.args = {
+  color: 'black',
+  fontWeight: 'normal',
+  text: 'Another example of text',
+  textAlign: 'center',
+  size:"large"
+};

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Container } from '../../components/atoms/Container';
+import { Text } from '../../components/atoms/Text';
 
 export default {
   title: 'Atoms/Container',
@@ -10,9 +11,8 @@ export default {
 
 const Template: ComponentStory<typeof Container> = (args) => {
     return (
-        <Container showShadow>
-            <div style={{backgroundColor: 'red', height: '150px', width: '100px'}}/>
-            <div style={{backgroundColor: 'yellow', height: '150px', width: '100px'}}/>
+        <Container showShadow borderRadius='standard' background='primary'>
+            <Text text='Example' color='white'/>
         </Container>
     )
 };
