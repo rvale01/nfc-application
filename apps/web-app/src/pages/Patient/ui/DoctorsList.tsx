@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import { Box, DoctorsList, LoadingSpinner, Text } from "ui-web"
 import { useAppDispatch, useAppSelector } from "../../store";
 import { selectorDoctorsListRequest } from "../redux/selectors";
+import { getDoctorsList } from "../redux/thunk";
 
 
 export const DoctorsDetailsList = () => {
     const { data: doctorsList, status} = useAppSelector(selectorDoctorsListRequest)
-    const dispqtch = useAppDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(()=> {
-
+        dispatch(getDoctorsList())
     }, [])
 
     if(status === 'fulfilled'){

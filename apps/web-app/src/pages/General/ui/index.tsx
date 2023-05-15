@@ -23,7 +23,7 @@ interface PropsI {
 }
 
 export const General = () => {
-    const [isAuth, setIsAuth] = useState<boolean | null>(null)
+    const [isAuth, setIsAuth] = useState<boolean | null | string>((localStorage.getItem('is_auth')))
     useEffect(() => { 
         if(localStorage.getItem("user_id") === null){
             onAuthChange({setIsAuth: setIsAuth})
@@ -31,6 +31,7 @@ export const General = () => {
       }, []);
 
     const ProtectedRoute = ({ element }: PropsI) => {
+        console.log(isAuth, isTokenValid(), "hello?")
         if(isAuth === null){
             return <LoadingSpinner color="primary"/>
         }

@@ -36,6 +36,7 @@ export const Doctor = () => {
         if(path === "logout"){
             auth.signOut()
             localStorage.clear()
+            navigate('/')
         }else{
             navigate(`/doctor/${path}`)
         }

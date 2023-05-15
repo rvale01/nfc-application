@@ -150,7 +150,7 @@ export const updateDisease = createAsyncThunk(
                     success: {
                         render(){
                             dispatch(getPatientsList())
-                            return "Disease added successfully!"
+                            return "Disease updated successfully!"
                         }
                     }
                 }
@@ -173,7 +173,7 @@ export const deleteDisease = createAsyncThunk(
                     success: {
                         render(){
                             dispatch(getPatientsList())
-                            return "Disease added successfully!"
+                            return "Disease deleted successfully!"
                         }
                     }
                 }

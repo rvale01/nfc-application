@@ -57,8 +57,8 @@ export const EditModal = ({showModal, onCancel, onConfirm, prescription}:EditMod
                         <Input type="date" placeholder="End" defaultValue={prescription.start} ref={endRef}/>
                     </Box>
 
-                    <Box direction="column">
-                        <Text text="Start" size="small" color="black" fontWeight="bold"/>
+                    <Box direction="column" width={"40%"}>
+                        <Text text="Recurring" size="small" color="black" fontWeight="bold"/>
                         <Toggle defaultChecked={false} ref={recurringRef}/>
                     </Box>
                 </Box>

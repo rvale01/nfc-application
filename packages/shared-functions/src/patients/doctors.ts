@@ -3,7 +3,7 @@ import { db } from "../firestore";
 
 
 export const getDoctorsListFunc = async(patientId: string) => {
-    const q = query(collection(db, "doctors"), where("patients", "array-contains", patientId));
+    const q = query(collection(db, "patient_doctor_relation"), where("patients", "array-contains", patientId));
     const queryDocsIds = await getDocs(q);
     let doctorsIds: string[] = []
     queryDocsIds.forEach((doc) => {

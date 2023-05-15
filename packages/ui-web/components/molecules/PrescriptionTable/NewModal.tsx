@@ -58,7 +58,7 @@ export const NewModal = ({ showModal, onCancel, onConfirm }: NewModalI) => {
           <Input type="date" placeholder="End" ref={endRef} />
         </Box>
 
-        <Box direction="column">
+        <Box direction="column" width={"40%"}>
           <Text text="Recurring" size="small" color="black" fontWeight="bold" />
           <Toggle defaultChecked={false} ref={recurringRef} />
         </Box>

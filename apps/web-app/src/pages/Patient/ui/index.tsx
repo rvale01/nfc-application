@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { DashboardLayout } from "ui-web";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { logout } from "shared-functions";
+import { auth, logout } from "shared-functions";
 import { PersonalDetails } from "./PersonalDetails";
 import { useAppDispatch } from "../../store";
 import { getPatientDetails } from "../redux/thunk";
@@ -36,8 +36,9 @@ export const Patient = () => {
 
     const handleChange = async(path: string) => {
         if(path === "logout"){
-            await logout()
+            auth.signOut()
             localStorage.clear()
+            navigate('/')
         }else{
             navigate(`/patient/${path}`)
         }
