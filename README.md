@@ -19,3 +19,5 @@ This project has several packages. The most important ones are:
 - web-app: this can be built by just running the yarn build. Or it can be tested locally by running yarn dev run.
 
 - native-app: this cannot be tested locally given the fact that it uses react-native-nfc, therefore it needs to be built with eas remotely and then a version will be published for internal use.
+
+Storybook link: https://63b870e9095b431cf0c0be6f-iccxxymgpt.chromatic.com
