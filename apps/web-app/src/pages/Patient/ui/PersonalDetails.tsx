@@ -16,7 +16,13 @@ export const PersonalDetails = () => {
                     fontWeight="bold"
                     size="large"
                     color="black"
+                /> 
+                <Text
+                    text={`Share code: ${patientDetails.shared_code}` }
+                    size="medium"
+                    color="black"
                 />
+
                 <Tabs
                     items={[
                         {
