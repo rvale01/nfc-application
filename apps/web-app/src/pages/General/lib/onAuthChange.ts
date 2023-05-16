@@ -21,9 +21,6 @@ export const onAuthChange = ({setIsAuth}: {setIsAuth: (isValid: boolean) => void
           localStorage.removeItem('is_auth')
           localStorage.removeItem('access_token');
           localStorage.removeItem('access_token_expiration');
-          // if(!window.location.hash.includes("#/patient-details/")){
-          //   window.location.href = '/#/login'
-          // }
         }
       });
 }

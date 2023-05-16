@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
-import { auth, db } from '../firestore';
+import { auth, db } from '../firebase';
 import { v4 as uuidv4 } from 'uuid';
 
 export const registerFunc = async({email, password, doctorCode, name, surname}:RegisterI) => {

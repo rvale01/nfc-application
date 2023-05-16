@@ -31,7 +31,6 @@ export const General = () => {
       }, []);
 
     const ProtectedRoute = ({ element }: PropsI) => {
-        console.log(isAuth, isTokenValid(), "hello?")
         if(isAuth === null){
             return <LoadingSpinner color="primary"/>
         }

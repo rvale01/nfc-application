@@ -1,4 +1,4 @@
-import { db } from '../firestore';
+import { db } from '../firebase';
 import { doc, arrayUnion, getDoc, updateDoc, arrayRemove, setDoc } from "firebase/firestore";
 
 export const addNewDiseaseFunc = async (disease: DiseasesI, patientId: string) => {

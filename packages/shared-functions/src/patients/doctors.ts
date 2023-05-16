@@ -1,5 +1,5 @@
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firestore";
+import { db } from "../firebase";
 
 
 export const getDoctorsListFunc = async(patientId: string) => {

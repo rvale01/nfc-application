@@ -1,4 +1,4 @@
-export * from './firestore';
+export * from './firebase';
 
 export * from './patients/details'
 export * from './patients/doctors'

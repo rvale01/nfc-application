@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, query, getDocs, collection, where, arrayUnion, setDoc, getDoc, arrayRemove, updateDoc, addDoc } from "firebase/firestore";
 import { createNewUser } from "../auth/newPatient";
-import { db } from "../firestore";
+import { db } from "../firebase";
 import { v4 as uuidv4 } from 'uuid';
 
 export const addPatientByCodeFunc = async(userCode: string, doctorId: string) => {
