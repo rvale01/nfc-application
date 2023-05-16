@@ -44,7 +44,7 @@ export const Doctor = () => {
 
     return(
         <DashboardLayout
-            activeItem={1}
+            activeItem={0}
             menuItems={menuItems}
             onChange={handleChange}
         >
